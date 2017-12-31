@@ -5,6 +5,8 @@ include("includes/classes/Post.php");
 include("includes/classes/Item.php");
 include("includes/classes/Distance.php");
 include("includes/classes/Message.php");
+include("includes/classes/Price.php");
+include("includes/classes/Extras.php");
 include("includes/classes/stripe/OrderProcess.php");
 
 $userLoggedIn = "";

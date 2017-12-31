@@ -25,32 +25,6 @@ class Distance {
         return $degrees * Math.PI / 180;
     }
 
-    public function getDistanceInMetersToOLD(Distance $other) {
-        $radiusOfEarth = 6371000;// Earth's radius in meters.
-
-        $diffLatitude = $other->getLatitude() - $this->latitude;
-        $diffLongitude = $other->getLongitude() - $this->longitude;
-        $a = sin($diffLatitude / 2) * sin($diffLatitude / 2) +
-            cos($this->latitude) * cos($other->getLatitude()) *
-            sin($diffLongitude / 2) * sin($diffLongitude / 2);
-        $c = 2 * asin(sqrt($a));
-        $distance = $radiusOfEarth * $c;
-
-        ?>
-
-        <script>
-
-        var temp = '<?php echo $distance; ?>';
-
-        console.log(temp);
-
-        </script>
-
-        <?php
-
-        return $distance;
-    }
-
     public function getDistanceInMetersTo($lat1, $long1, $lat2, $long2) {
 
       $earthRadiusKm = 6371;

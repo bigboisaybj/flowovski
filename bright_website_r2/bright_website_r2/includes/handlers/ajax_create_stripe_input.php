@@ -8,4 +8,4 @@ include("../classes/stripe/Stripe.php");
 $stripe = new Stripe($con, $_REQUEST['itemPrice']);
 $stripe->createPaymentForm($_REQUEST);
 
- ?>
+?>

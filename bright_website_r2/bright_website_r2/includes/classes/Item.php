@@ -5,13 +5,25 @@ class Item {
   private $username;
   private $merchant;
   private $merchantID;
+  private $totalCustomers;
+  private $distance;
+  private $waitingTime;
+  private $long;
+  private $lat;
+  private $profile_pic;
   private $itemCounter;
 
-  public function __construct($con, $username, $merchant, $merchantID) {
+  public function __construct($con, $username, $merchant, $merchantID, $totalCustomers, $distance, $waitingTime, $long, $lat,$profile_pic) {
     $this->con = $con;
     $this->username = $username;
     $this->merchant = $merchant;
     $this->merchantID = $merchantID;
+    $this->totalCustomers = $totalCustomers;
+    $this->distance = $distance;
+    $this->waitingTime = $waitingTime;
+    $this->long = $long;
+    $this->lat = $lat;
+    $this->profile_pic = $profile_pic;
     $this->itemCounter = 0;
   }
 
@@ -52,14 +64,19 @@ class Item {
 
         $data = array();
 
-
-        array_push($data, $this->username);
-        array_push($data, $this->merchant);
-        array_push($data, $item_title);
-        array_push($data, $item_price);
-        array_push($data, $item_picture);
         array_push($data, $this->merchantID);
-        array_push($data, $item_id);
+        array_push($data, $this->totalCustomers);
+        array_push($data, $this->merchant);
+        array_push($data, $this->distance);
+        array_push($data, $this->waitingTime);
+        array_push($data, $this->long);
+        array_push($data, $this->lat);
+        array_push($data, $item_picture);
+        array_push($data, $this->username);
+        array_push($data, $item_price_formatted);
+        array_push($data, $item_title);
+        array_push($data, $item_description);
+        array_push($data, $item_health);
 
         $data_json = json_encode($data);
 
@@ -78,7 +95,6 @@ class Item {
                 $item_health kJ • $$item_price_formatted
               </div>
               ";
-
 
     }
     return $str;
@@ -131,7 +147,7 @@ class Item {
         array_push($data, $this->username);
         array_push($data, $this->merchant);
         array_push($data, $item_title);
-        array_push($data, $item_price);
+        array_push($data, $item_price_formatted);
 
         $data_json = json_encode($data);
 
@@ -202,7 +218,7 @@ class Item {
         array_push($data, $this->username);
         array_push($data, $this->merchant);
         array_push($data, $item_title);
-        array_push($data, $item_price);
+        array_push($data, $item_price_formatted);
 
         $data_json = json_encode($data);
 
@@ -282,33 +298,6 @@ class Item {
 
       return $this->itemCounter;
     }
-
 }
 
 ?>
-
-<script type="text/javascript">
-
-function createExtrasForm(data) {
-
-  $.ajax({
-    type: "POST",
-    url: "includes/handlers/ajax_create_extras_input.php",
-    data: {
-        userName: data[0],
-        merchantName: data[1],
-        itemTitle: data[2],
-        itemPrice: data[3],
-        product_picture: data[4],
-        merchantID: data[5],
-        itemID: data[6],
-    },
-    success: function(response) {
-      $(".extras_area").html(response);
-    }
-
-  });
-}
-
-
-</script>

@@ -368,7 +368,7 @@ input:-webkit-autofill {
   margin-top: 20px;
   margin-left: 10px;
   width: 640px;
-  height: 50px;
+  height: 35px;
   background-color: #A1A8AF;
 }
 
@@ -455,6 +455,16 @@ input:-webkit-autofill {
   float:left;
 }
 
+#second_item {
+  width: 130px;
+  color: #A1A8AF;
+  margin-left: 20px;
+  float:left;
+  font-family: "Arial", sans-serif;
+  color: #0070c9;
+  border: none;
+}
+
 .third_item {
   width: 134px;
   float:right;
@@ -499,9 +509,9 @@ input:-webkit-autofill {
   height: 0px;
 }
 
-.extras_area {
+#extras_area {
   padding-top: 85px;
-  width: 180px;
+  width: 200px;
   height: 360px;
   float: left;
   margin-left: 30px;
@@ -604,6 +614,7 @@ input:-webkit-autofill {
   color: #0070c9;
   border: none;
   font-weight: 100;
+  float: left;
 }
 
 #stripe_button:focus {
@@ -648,14 +659,101 @@ input:-webkit-autofill {
 .extraArea {
   width: 100%;
   font-family: "Arial", sans-serif;
+  float: left;
 }
 
-.extrasTitle {
+#extrasTitle {
   cursor: pointer;
   margin-bottom: 10px;
   color: #0070c9;
 }
 
 .extrasHealthAndPrice {
+  float: left;
+  margin-top: 3px;
+}
 
+.extrasVolume{
+  float: left;
+}
+
+.extras_summary {
+  margin-top: 10px;
+  font-family: "Arial", sans-serif;
+  font-size: 18px;
+  color: #0070c9;
+  border: none;
+  font-weight: 100;
+  width: 130px;
+  margin-left: 30px;
+  float:left;
+}
+
+.extras_item_list {
+  margin-top: 5px;
+  width: 154px;
+  height: 35px;
+  font-size: 14px;
+  color: #6e6e7ad1;
+}
+
+.extras_total {
+  margin-top: 5px;
+  color: #6e6e7ad1;
+}
+
+.confirmToOpenStripe {
+  position: fixed;
+  cursor: pointer;
+  font-family: "Arial", sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+  color: #0070c9;
+  border: none;
+  float: left;
+  margin-top: 25px;
+}
+
+#extra_list {
+  margin-top: 5px;
+  width: 130px;
+  font-size: 14px;
+  color: #6e6e7ad1;
+  float:left;
+}
+
+#total_item_title{
+  margin-top: 10px;
+  width: 134px;
+  float: right;
+  color: #0070c9;
+}
+
+#total_price_description{
+  margin-top: 5px;
+  width: 130px;
+  height: 35px;
+  font-size: 14px;
+  color: #A1A8AF;
+}
+
+#extra_title_list{
+  display: none;
+}
+
+#extraVolumeForm{
+  float: left;
+}
+
+.sliderExtra{
+  float: left;
+}
+
+.extraSliderOutput{
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+#originalExtrasContainer{
+  display: none;
 }

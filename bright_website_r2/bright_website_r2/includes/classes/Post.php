@@ -51,8 +51,6 @@ class Post {
 
         $total_customers_commas = number_format($total_customers);
 
-        $currentItem = new Item($con, $userLoggedIn, $merchant_name, $merchant_id);
-
         $waitingTime = $this->checkWaitingTimeForUpdate($merchant_name);
 
             if($num_iterations++ < $start)
@@ -67,12 +65,15 @@ class Post {
 
             $distance = $this->getDistance($merchant_name, $longitude, $latitude);
 
+            $currentItem = new Item($con, $userLoggedIn, $merchant_name, $merchant_id, $total_customers_commas, $distance, $waitingTime, $longitude, $latitude, $profile_pic);
+
             $str .=
 
                   "
-                  <div class=merchant_$merchant_id>
 
                   <div class='templateCard'>
+
+                  <div class=merchant_$merchant_id>
 
                     <div class='merchant_tabs'>
 
@@ -124,6 +125,13 @@ class Post {
 
                       . " </div>
 
+                      <div class='extras_$merchant_id'>
+
+                        <div class='extras_item_list_$merchant_id'>
+                        </div>
+
+                      </div>
+
                       <div class='third_item'>" .
 
                       $currentItem->construct_third_item($this->item_count)
@@ -134,7 +142,9 @@ class Post {
 
                     </div>
 
-                    <div class='extras_area'>
+                    </div>
+
+                    <div class='extras_area_$merchant_id' id='extras_area'>
 
                     </div>
 
