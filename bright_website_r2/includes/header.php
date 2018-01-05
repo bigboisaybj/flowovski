@@ -7,6 +7,8 @@ include("includes/classes/Distance.php");
 include("includes/classes/Message.php");
 include("includes/classes/Price.php");
 include("includes/classes/Extras.php");
+include("includes/classes/AjaxSearchData.php");
+include("includes/classes/SearchHistory.php");
 include("includes/classes/stripe/OrderProcess.php");
 
 $userLoggedIn = "";
@@ -50,7 +52,7 @@ if (isset($_SESSION['username'])) {
 
 				<div class="search">
 
-        <form action="search.php" method="GET" name="search_form" class="input" style="height: 0px">
+        <form action="search.php" method="GET" id="search_form" class="input" style="height: 0px">
 					<input id="search_text_input" type="text" onkeyup="getLiveSearchUsers(this.value, '<?php echo $userLoggedIn; ?>')" name="q" autocomplete="off" id="search_text_input" autofocus>
 				</form>
 			</div>
@@ -82,21 +84,19 @@ if (isset($_SESSION['username'])) {
         </ul>
       </div>
 
+			<div class="accuracy_measure">
+				<?php
+
+					$prediction_accuracy = 0;
+					$prediction_numerator = 0;
+					$prediction_denominator = 0;
+
+					echo "$prediction_accuracy% accurate in $prediction_numerator out of $prediction_denominator conditions";
+
+				 ?>
+			</div>
+
     </div>
   </div>
 
-	<div class="accuracy_measure">
-		<?php
-
-			$prediction_accuracy = 0;
-			$prediction_numerator = 0;
-			$prediction_denominator = 0;
-
-			echo "$prediction_accuracy% accurate in $prediction_numerator out of $prediction_denominator conditions";
-
-		 ?>
-	</div>
-
-	<div class="search_results"></div>
-
-	<div class="search_results_footer_empty"></div>
+	<div class="search_results column"></div>

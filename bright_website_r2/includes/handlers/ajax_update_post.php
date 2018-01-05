@@ -3,7 +3,7 @@
 $str = "";
 
   if(isset($_POST['merchantID'])) {
-
+    
     $merchant_id = $_POST['merchantID'];
     $total_customers_commas = $_POST['totalCustomers'];
     $merchant_name = $_POST['merchantName'];
@@ -72,7 +72,6 @@ $str = "";
                 <div class='merchant_product_health'>
                   $itemHealth kJ • $$itemPrice
                 </div>
-
 
                 </div>
 

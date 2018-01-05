@@ -7,6 +7,8 @@ include("../classes/Distance.php");
 include("../classes/Item.php");
 include("../classes/Price.php");
 include("../classes/Extras.php");
+include("../classes/AjaxSearchData.php");
+include("../classes/SearchHistory.php");
 include("../classes/stripe/OrderProcess.php");
 
 $limit = 2;

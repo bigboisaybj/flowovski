@@ -2,6 +2,7 @@ var presentType = "";
 var totalPrice;
 var init = false;
 var itemName = "";
+var jsonData;
 
 $(document).ready(function() {
 
@@ -39,33 +40,96 @@ $(document).ready(function() {
 
 });
 
+function messageFocus(elem){
+  var x = window.scrollX, y = window.scrollY;
+  elem.focus();
+  window.scrollTo(x,y);
+}
+
 function openMessages(merchantID){
 
-  if($(".merchant_messages_window").css("height") == "0px") {
+  if($(".merchant_window_"+merchantID).css("height") == "0px") {
       var ajaxreq = $.ajax({
       url: "message.php",
       type: "POST",
       data: "merchantID=" + merchantID,
 
       success: function(response) {
-        $(".merchant_messages_window").html(response);
-        $(".merchant_messages_window").css({"padding" : "0px", "height" : "360px"});
-        $("#merchant_photos").css({"padding" : "0px", "height" : "0px"});
+        $(".merchant_window_"+merchantID).html(response);
+        $(".merchant_window_"+merchantID).css({"padding" : "0px", "height" : "360px"});
+        messageFocus(document.getElementById('message_textarea'));
+        $("#merchant_photos_"+merchantID).css({"padding" : "0px", "height" : "0px"});
+        $("#chatButton_"+merchantID).css({"color" : "#0070c9"});
+
+        if($("#customers_"+merchantID).css("color") != "#6E6E7A"){
+          $("#customers_"+merchantID).css({"color" : "#6E6E7A"});
+        }
       }
     });
   }
 
-  if($(".merchant_messages_window").css("height") != "0px") {
-    $(".merchant_messages_window").html("");
-    $(".merchant_messages_window").css({"padding" : "0px", "height" : "0px"});
-    $("#merchant_photos").css({"padding" : "0px", "height" : "360px"});
+  if($(".merchant_window_"+merchantID).css("height") != "0px") {
+    $(".merchant_window_"+merchantID).html("");
+    $(".merchant_window_"+merchantID).css({"padding" : "0px", "height" : "0px"});
+    $("#merchant_photos_"+merchantID).css({"padding" : "0px", "height" : "360px"});
+    $("#chatButton_"+merchantID).css({"color" : "#6E6E7A"});
+
+    if($("#customers_"+merchantID).css("color") != "#0070c9"){
+      $("#customers_"+merchantID).css({"color" : "#0070c9"});
+    }
 
   }
+}
+
+function openMerchantItemsDisplay(merchantID){
+
+  if($(".merchant_window_"+merchantID).css("height") != "0px") {
+    $(".merchant_window_"+merchantID).html("");
+    $(".merchant_window_"+merchantID).css({"padding" : "0px", "height" : "0px"});
+    $("#merchant_photos_"+merchantID).css({"padding" : "0px", "height" : "360px"});
+    $("#chatButton_"+merchantID).css({"color" : "#6E6E7A"});
+
+    if($("#customers_"+merchantID).css("color") != "#0070c9"){
+      $("#customers_"+merchantID).css({"color" : "#0070c9"});
+    }
+
+  }
+
+}
+
+function enterKeySubmit(data, key, element){
+  if(key.keyCode === 13) {
+    sendMessage(data,element);
+  }
+}
+
+function sendMessage(data, element){
+  var merchantName = data[1];
+  var message = document.getElementById("message_textarea").value;
+  element.value = '';
+
+  $.ajax({
+    url: "includes/handlers/ajax_send_message.php",
+    type: "POST",
+    data: {
+        userName: data[0],
+        merchantName: data[1],
+        merchantID: data[2],
+        message: message,
+    },
+    success: function(response){
+      $(".loaded_messages_"+merchantName).append(response);
+
+    }
+
+  });
+
 }
 
 function showUserHeader(type, userLoggedIn) {
 
   if (userLoggedIn != "" && type == 'user_account') {
+    checkDropdownOrItemsWindows("dropdown");
     showUserPage(type);
   }
   else {
@@ -88,6 +152,9 @@ function showUserHeader(type, userLoggedIn) {
 }
 
 function typeOpener(type) {
+
+  checkDropdownOrItemsWindows("dropdown");
+
   if(type == 'user_account') {
     pageName = "register.php";
   }
@@ -154,19 +221,25 @@ function getLiveSearchUsers(value, user) {
 
   $.post("includes/handlers/ajax_search.php", {query:value, userLoggedIn: user}, function(data) {
 
-    if($(".search_results_footer_empty")[0]) {
-      $(".search_results_footer_empty").toggleClass("search_results_footer");
-      $(".search_results_footer_empty").toggleClass("search_results_footer_empty");
+    if(data != ""){
+      $('.search_results').html(data);
+      if($(".search_results").css("height") != "0px") {
+        $(".search_results").css({"margin-top" : "80px"})
+        $(".posts_area").css({"visibility" : "hidden"});
+        $(".main_column").css({"height" : "0px"});
+
+      }
+      else{
+        if($(".posts_area").css("visibility") == "hidden"){
+          $(".posts_area").css({"visibility" : "visible"});
+          $(".search_results").css({"margin-top" : "0px"})
+          $(".main_column").css({"height" : "655px"});
+        }
+      }
     }
 
-    $('.search_results').html(data);
     //$('.search_results_footer').html("<a href='search.php?q=" + value + "'>See All Results</a>");
 
-    if(data == "") {
-      $('.search_results_footer').html("");
-      $(".search_results_footer").toggleClass("search_results_footer_empty");
-      $(".search_results_footer").toggleClass("search_results_footer");
-    }
   });
 }
 
@@ -418,7 +491,7 @@ function animateSlider(data) {
     var divNumber = "";
 
     var newName = extraName.replace("_", " ");
-    $(".extrasTitle_"+extraName).html("+ "+newName);
+    $(".extrasTitle_"+extraName).html("+  "+newName);
 
     var extraList = document.getElementsByClassName("extras_titles_"+merchantID)[0].innerHTML;
     var trimmedList = extraList.trim();
@@ -617,8 +690,104 @@ function animateSlider(data) {
 
   }
 
+  function checkDropdownOrItemsWindows(type){
+
+    if(type === "dropdown"){
+      //check extras
+      $("#extras_area").html("");
+      $("#extras_area").css({"padding" : "0px", "height" : "0px"});
+
+    }
+
+    else if(type === "extras"){
+      //check dropDown
+
+      $(".dropdown_user_window").html("");
+      $(".dropdown_user_window").css({"padding" : "0px", "height" : "0px"});
+
+    }
+
+  }
+
+  function addExtraData(data){
+    jsonData = data;
+  }
+
+  function searchResultExtraForm_one(data){
+    searchResultExtra(data, "one");
+  }
+
+  function searchResultExtraForm_two(data){
+    searchResultExtra(data, "two");
+  }
+
+  function searchResultExtraForm_three(data){
+    searchResultExtra(data, "three");
+  }
+
+  function searchResultExtra(data, type){
+
+    //console.log(data);
+    //console.log(type);
+
+    var itemFromSearch;
+    var merchant_id = data['merchantID'];
+
+    if(type == 'one'){
+      itemFromSearch = document.getElementsByClassName("search_first_"+merchant_id)[0].innerHTML;
+    }
+
+    if(type == 'two'){
+      itemFromSearch = document.getElementsByClassName("search_second_"+merchant_id)[0].innerHTML;
+    }
+
+    if(type == 'three'){
+      itemFromSearch = document.getElementsByClassName("search_third_"+merchant_id)[0].innerHTML;
+    }
+
+    document.getElementById("search_form").reset();
+
+    $.ajax({
+      url: "includes/handlers/ajax_search_item_selection.php",
+      type: "POST",
+      data: {
+
+        merchantID:  data['merchantID'],
+        totalCustomers: data['totalCustomers'],
+        merchantName: data['merchantName'],
+        distance: data['distance'],
+        waitingTime: data['waitingTime'],
+        long: data['long'],
+        lat: data['lat'],
+        profile_pic: data['profile_pic'],
+        username: data['username'],
+        item: itemFromSearch,
+
+      },
+
+      success: function(response) {
+        if($(".posts_area").css("visibility") == "hidden"){
+          $(".search_item").remove();
+          $(".posts_area").css({"visibility" : "visible"});
+          $(".main_column").css({"height" : "655px"});
+          $(".posts_area").html(response);
+
+        }
+      }
+
+    });
+  }
 
   function createExtrasForm(data) {
+
+    if(data == null){
+      data = jsonData;
+    }
+    else {
+      addExtraData(data);
+    }
+
+    checkDropdownOrItemsWindows("extras");
 
     $.ajax({
 
@@ -626,23 +795,23 @@ function animateSlider(data) {
       type: "POST",
       data: {
 
-            merchantID:  data[0],
-            totalCustomers: data[1],
-            merchantName: data[2],
-            distance: data[3],
-            waitingTime: data[4],
-            long: data[5],
-            lat: data[6],
-            profile_pic: data[7],
-            username: data[8],
-            itemPrice: data[9],
-            itemTitle: data[10],
-            itemDescription: data[11],
-            itemHealth: data[12],
+            merchantID:  data['merchantID'],
+            totalCustomers: data['totalCustomers'],
+            merchantName: data['merchantName'],
+            distance: data['distance'],
+            waitingTime: data['waitingTime'],
+            long: data['long'],
+            lat: data['lat'],
+            profile_pic: data['profile_pic'],
+            username: data['username'],
+            itemPrice: data['itemPrice'],
+            itemTitle: data['itemTitle'],
+            itemDescription: data['itemDescription'],
+            itemHealth: data['itemHealth'],
 
       },
       success: function(response) {
-        $(".merchant_"+data[0]).html(response);
+        $(".merchant_"+data['merchantID']).html(response);
       }
 
     });
@@ -652,24 +821,59 @@ function animateSlider(data) {
       url: "includes/handlers/ajax_create_extras_input.php",
       data: {
 
-          merchantID: data[0],
-          totalCustomers: data[1],
-          merchantName: data[2],
-          distance: data[3],
-          waitingTime: data[4],
-          long: data[5],
-          lat: data[6],
-          itemPicture: data[7],
-          username: data[8],
-          itemPrice: data[9],
-          itemTitle: data[10],
-          itemDescription: data[11],
-          itemHealth: data[12],
+        merchantID:  data['merchantID'],
+        totalCustomers: data['totalCustomers'],
+        merchantName: data['merchantName'],
+        distance: data['distance'],
+        waitingTime: data['waitingTime'],
+        long: data['long'],
+        lat: data['lat'],
+        profile_pic: data['profile_pic'],
+        username: data['username'],
+        itemPrice: data['itemPrice'],
+        itemTitle: data['itemTitle'],
+        itemDescription: data['itemDescription'],
+        itemHealth: data['itemHealth'],
       },
       success: function(response) {
-        $(".extras_area_"+data[0]).html(response);
+        $(".extras_area_"+data['merchantID']).html(response);
       }
 
     });
 
+  }
+
+  function openMerchant(data){
+
+    document.getElementById("search_form").reset();
+
+    $.ajax({
+      type: "POST",
+      url: "includes/handlers/ajax_create_searched_merchant.php",
+      data: {
+        merchantID:  data['merchantID'],
+        totalCustomers: data['totalCustomers'],
+        merchantName: data['merchantName'],
+        distance: data['distance'],
+        waitingTime: data['waitingTime'],
+        long: data['long'],
+        lat: data['lat'],
+        profile_pic: data['profile_pic'],
+        username: data['username'],
+        itemOne: data['itemOne'],
+        itemTwo: data['itemTwo'],
+        itemThree: data['itemThree'],
+      },
+      success: function(response) {
+        if($(".posts_area").css("visibility") == "hidden"){
+          $(".search_item").remove();
+          $(".search_results").css({"margin-top" : "0px"})
+          $(".posts_area").css({"visibility" : "visible"});
+          $(".main_column").css({"height" : "655px"});
+          $(".posts_area").html(response);
+
+        }
+      }
+
+    });
   }

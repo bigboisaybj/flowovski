@@ -35,6 +35,9 @@ include("includes/header.php");
 
     </div>
 
+    <div class='merchant_data_container' style='visibility:hidden; height:0px'>
+
+    </div>
 
     <script>
 

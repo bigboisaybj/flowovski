@@ -3,12 +3,10 @@
 class Post {
   private $user_obj;
   private $con;
-  private $item_count;
 
   public function __construct($con, $user){
     $this->con = $con;
     $this->user_obj = new User($con, $user);
-    $this->item_count = 0;
   }
 
   public function loadMerchants($data, $limit) {
@@ -23,9 +21,7 @@ class Post {
     }
 
     $str = "";
-    $data_query = mysqli_query($this->con, "SELECT * FROM merchants WHERE merchant_name='Dirt' ORDER BY id DESC");
-
-    //RE-INSERT FOR QUERIES GREATER THAN JUST 1 MERCHANT --> deleted='no'
+    $data_query = mysqli_query($this->con, "SELECT * FROM merchants ORDER BY id DESC");
 
     if(mysqli_num_rows($data_query) > 0) {
 
@@ -65,7 +61,7 @@ class Post {
 
             $distance = $this->getDistance($merchant_name, $longitude, $latitude);
 
-            $currentItem = new Item($con, $userLoggedIn, $merchant_name, $merchant_id, $total_customers_commas, $distance, $waitingTime, $longitude, $latitude, $profile_pic);
+            $currentItem = new Item($this->con, $userLoggedIn, $merchant_name, $merchant_id, $total_customers_commas, $distance, $waitingTime, $longitude, $latitude, $profile_pic);
 
             $str .=
 
@@ -77,25 +73,26 @@ class Post {
 
                     <div class='merchant_tabs'>
 
-                      <div class='templateSHARE'>
+                      <div class='templateSHARE' id='share_$merchant_id'>
                         Share
                       </div>
 
                       <div class='templateCHAT'>
-                        <input type='submit' value='Message' onclick='openMessages($merchant_id)' style='text-decoration: none'>
+                        <input type='submit' class='chatButton' id='chatButton_$merchant_id' value='Message' onclick='openMessages($merchant_id)' style='text-decoration: none'>
                       </div>
 
-                      <div class='templateTOTALCUSTOMERS'>
+                      <div class='templateTOTALCUSTOMERS' id='customers_$merchant_id' onclick='openMerchantItemsDisplay($merchant_id)'>
                         $total_customers_commas<br>customers
                       </div>
 
                     </div>
+
                     <div class='merchant_title'>
                       $merchant_name
                     </div>
 
                       <div class='templateLOCSTAT'>
-                      <input type='submit' value='".$distance."km away with ".$waitingTime." minute wait' onclick='showMerchantWindow($long, $lat)' style='text-decoration: none' id='locationButton'>
+                      <input type='submit' value='".$distance." km away with ".$waitingTime." minute wait' onclick='showMerchantWindow($long, $lat)' style='text-decoration: none' id='locationButton'>
                       </div>
 
                       <br>
@@ -104,8 +101,8 @@ class Post {
                       </div>
 
                       <div class='merchant_gallery'>
-                        <img src=$profile_pic width='640px' height='360px' id='merchant_photos'>
-                        <div class='merchant_messages_window' style='height:0px; border:none;'></div>
+                        <img src=$profile_pic width='640px' height='360px' id='merchant_photos_$merchant_id'>
+                        <div id='merchant_messages_window' class='merchant_window_$merchant_id' style='height:0px; border:none;'></div>
                        		<input type='hidden' id='merchant_message_type'>
 
                       </div>
@@ -113,7 +110,7 @@ class Post {
                   <div class='items'>
                       <div class='current_item'>" .
 
-                      $currentItem->construct_first_item($this->item_count)
+                      $currentItem->construct_first_item()
 
                       . "
 
@@ -121,7 +118,7 @@ class Post {
 
                       <div class='second_item'>" .
 
-                      $currentItem->construct_second_item($this->item_count)
+                      $currentItem->construct_second_item()
 
                       . " </div>
 
@@ -134,7 +131,7 @@ class Post {
 
                       <div class='third_item'>" .
 
-                      $currentItem->construct_third_item($this->item_count)
+                      $currentItem->construct_third_item()
 
                       . " </div>
 
@@ -243,12 +240,14 @@ class Post {
 
           $latestUpdate = mysqli_query($this->con, "SELECT last_updated_waiting_time FROM global_records WHERE status='LATEST'");
 
+          //If there is a latestUpdate column...
           if(mysqli_num_rows($latestUpdate) == 1) {
 
             $fetchWaitingTime = mysqli_fetch_array($latestUpdate);
 
             $lastTime = $fetchWaitingTime['last_updated_waiting_time'];
 
+            //If the latestUpdate is today's date...
             if($todayIs === $lastTime) {
 
               $date = date("Y-m-d H:i:s");
@@ -256,6 +255,7 @@ class Post {
               $timeOfQuery = $this->timeCategory($date);
 
               $time_query = mysqli_query($this->con, "SELECT $timeOfQuery FROM $tableName WHERE merchant_name='$merchantName'") or die(mysqli_error($this->con));
+
 
               if(mysqli_num_rows($time_query) > 0) {
 
@@ -269,18 +269,23 @@ class Post {
 
                   $meanResult = $this->findMeanResult($merchantName, $tableName);
 
-                  return $meanResult;
+                  $roundedResult = round($meanResult, 0);
+
+                  return $roundedResult;
                 }
 
                 else{
 
-                  return $timeResult;
+                  $roundedResult = round($timeResult, 0);
+
+                  return $roundedResult;
 
                 }
               }
 
             }
 
+            //If today's date doesn't match with result...
             else {
 
               $merchant_time_query = mysqli_query($this->con, "SELECT total_waiting_time, time_placed FROM sales WHERE merchantName='$merchantName'");
@@ -296,6 +301,8 @@ class Post {
 
                     $totalWaitingTime = $row['total_waiting_time'];
                     $timeFromTable = $row['time_placed'];
+
+                    $totalWaitingTime = floatval($totalWaitingTime);
 
                     $mean += $totalWaitingTime;
 
@@ -329,7 +336,7 @@ class Post {
 
                     }
 
-                    elseif(mysqli_num_rows($merchantName_query) > 1){
+                    elseif(mysqli_num_rows($merchantName_query) == 1){
 
                       $updateTime = true;
 
@@ -339,6 +346,7 @@ class Post {
               $updateMean = $mean/$instances;
 
               if($updateTime){
+
                 $updateTime = mysqli_query($this->con, "UPDATE $tableName SET $timeCategory='$updateMean' WHERE merchant_name='$merchantName'");
 
                 $updateLatestChange = mysqli_query($this->con, "UPDATE global_records SET last_updated_waiting_time='$todayIs' WHERE status='LATEST'");
@@ -489,6 +497,8 @@ class Post {
 
             $timeForOrder = $timeRow['total_waiting_time'];
 
+            $timeForOrder = floatval($timeForOrder);
+
             $total += $timeForOrder;
             $instances++;
 
@@ -501,6 +511,115 @@ class Post {
           $updateMean = mysqli_query($this->con, "UPDATE $tableName SET mean='$meanCeil' WHERE merchant_name='$merchantName'");
 
           return $meanCeil;
+
+        }
+
+        public function loadMerchantFromSearch($data){
+
+          if(isset($_POST['merchantID'])){
+
+            $merchant_id = $_POST['merchantID'];
+            $total_customers_commas = $_POST['totalCustomers'];
+            $merchant_name = $_POST['merchantName'];
+            $distance = $_POST['distance'];
+            $waitingTime = $_POST['waitingTime'];
+            $long = $_POST['long'];
+            $lat = $_POST['lat'];
+            $profile_pic = $_POST['profile_pic'];
+            $userLoggedIn = $_POST['username'];
+            $profile_pic = $_POST['profile_pic'];
+            $itemOne = $_POST['itemOne'];
+            $itemTwo = $_POST['itemTwo'];
+            $itemThree = $_POST['itemThree'];
+
+            $searchedMerchantItems = new Item($this->con, $userLoggedIn, $merchant_name, $merchant_id, $total_customers_commas, $distance, $waitingTime, $long, $lat, $profile_pic);
+
+            $str .=
+
+                  "
+
+                  <div class='templateCard'>
+
+                  <div class=merchant_$merchant_id>
+
+                    <div class='merchant_tabs'>
+
+                      <div class='templateSHARE'>
+                        Share
+                      </div>
+
+                      <div class='templateCHAT'>
+                        <input type='submit' value='Message' onclick='openMessages($merchant_id)' style='text-decoration: none'>
+                      </div>
+
+                      <div class='templateTOTALCUSTOMERS'>
+                        $total_customers_commas<br>customers
+                      </div>
+
+                    </div>
+
+                    <div class='merchant_title'>
+                      $merchant_name
+                    </div>
+
+                      <div class='templateLOCSTAT'>
+                      <input type='submit' value='".$distance." km away with ".$waitingTime." minute wait' onclick='showMerchantWindow($long, $lat)' style='text-decoration: none' id='locationButton'>
+                      </div>
+
+                      <br>
+
+                      <div class='liveQueue'>
+                      </div>
+
+                      <div class='merchant_gallery'>
+                        <img src=$profile_pic width='640px' height='360px' id='merchant_photos'>
+                        <div id='merchant_messages_window' class='merchant_window_$merchant_id' style='height:0px; border:none;'></div>
+                          <input type='hidden' id='merchant_message_type'>
+
+                      </div>
+
+                  <div class='items'>
+                      <div class='current_item'>".
+                      $searchedMerchantItems->construct_searched_first_item($itemOne)
+                      ."</div>
+
+                      <div class='second_item'>".
+                      $searchedMerchantItems->construct_searched_second_item($itemTwo)
+                      ."</div>
+
+                      <div class='extras_$merchant_id'>
+
+                        <div class='extras_item_list_$merchant_id'>
+                        </div>
+
+                      </div>
+
+                      <div class='third_item'>".
+
+                      $searchedMerchantItems->construct_searched_third_item($itemThree)
+                      ."</div>
+
+                    </div>
+
+                    </div>
+
+                    </div>
+
+                    <div class='extras_area_$merchant_id' id='extras_area'>
+
+                    </div>
+
+                    <div class='purchase_area'>
+
+                    </div>
+
+                    </div>
+
+                  ";
+
+                  echo $str;
+              }
+
 
         }
 

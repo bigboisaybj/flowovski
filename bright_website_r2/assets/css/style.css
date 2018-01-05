@@ -4,6 +4,12 @@ html {
   width: 100%;
 }
 
+body{
+padding:0px;
+margin-left: 8px;
+margin-top: 0px;
+}
+
 h1 {
   font-size: 32px;
   color: black;
@@ -47,6 +53,10 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px white inset !important;
 }
 
+textarea {
+    resize: none;
+  }
+
 #cont {
   overflow: hidden;
   width: 100%;
@@ -56,7 +66,8 @@ input:-webkit-autofill {
 #inner {
   overflow: hidden;
   width: 100%;
-  height: 65px;
+  height: 75px;
+  background-color: white;
 }
 
 .child {
@@ -67,7 +78,8 @@ input:-webkit-autofill {
 .container {
   width: 100%;
   height: 20px;
-  position: relative;
+  position: fixed;
+  margin-bottom: 60px;
 }
 
 .header_title {
@@ -75,7 +87,7 @@ input:-webkit-autofill {
   font-family: "Arial", sans-serif;
   font-weight: bolder;
   margin-left: 10px;
-  margin-top: 8px;
+  margin-top: 13px;
   text-decoration: none;
 }
 
@@ -90,9 +102,10 @@ input:-webkit-autofill {
   background: transparent;
   border: none;
   margin-left: 18px;
-  margin-top: 8px;
+  margin-top: 22px;
+  margin-bottom: 3px;
   border-bottom: 1px solid #000000;
-  font-size: 26px;
+  font-size: 20px;
   outline: none;
   font-family: "Arial", sans-serif;
 }
@@ -102,6 +115,10 @@ input:-webkit-autofill {
   top: 100%;
   left: 15%;
   font-size: 30px;
+}
+
+.posts_area{
+  margin-top: 80px;
 }
 
 .dropdown_user_window {
@@ -307,13 +324,10 @@ input:-webkit-autofill {
 }
 
 .search_results {
-  font-family: "Arial", sans-serif;
-  margin-left: 30px;
-  width: 600px;
-  background-color: red;
-  border: 1px solid #DADADA;
-  border-bottom: none;
-  border-top: none;
+  margin-left: 110px;
+	float:left;
+	width: 1300px;
+	z-index: -1;
 }
 
 .resultDisplay {
@@ -341,6 +355,7 @@ input:-webkit-autofill {
 }
 
 .templateTOTALCUSTOMERS {
+  cursor: pointer;
   float: right;
   margin-right: 20px;
   margin-top: 20px;
@@ -364,8 +379,76 @@ input:-webkit-autofill {
   color: #6E6E7A;
 }
 
+.chatButton {
+  cursor: pointer;
+  float: right;
+  font-size: 14px;
+  color: #6E6E7A;
+  text-align: center;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.chatButton:focus{
+  outline:0;
+}
+
+#search_preview_third{
+  cursor: pointer;
+  float: right;
+  margin-top: 25px;
+  font-size: 14px;
+  color: #6E6E7A;
+  width: 70px;
+}
+
+#search_preview_second{
+  cursor: pointer;
+  float: right;
+  margin-right: 50px;
+  margin-top: 25px;
+  font-size: 14px;
+  color: #6E6E7A;
+  width: 70px;
+}
+
+#search_preview_first{
+  cursor: pointer;
+  float: right;
+  margin-right: 50px;
+  margin-top: 25px;
+  font-size: 14px;
+  color: #6E6E7A;
+  width: 70px;
+}
+
 .liveQueue {
   margin-top: 20px;
+  margin-left: 10px;
+  width: 640px;
+  height: 35px;
+  background-color: #A1A8AF;
+}
+
+.search_item{
+  font-family: "Arial", sans-serif;
+  margin-bottom: 50px;
+  width: 640px;
+  height: 600px;
+  float: left;
+}
+
+.noSearchMatchings{
+  font-family: "Arial", sans-serif;
+  margin-bottom: 50px;
+  width: 640px;
+  height: 600px;
+  float: left;
+}
+
+.search_liveQueue {
+  margin-top: 50px;
   margin-left: 10px;
   width: 640px;
   height: 35px;
@@ -477,7 +560,6 @@ input:-webkit-autofill {
 	float:left;
 	width: 1300px;
 	z-index: -1;
-	min-height: 170px;
 }
 
 .merchant_box {
@@ -497,22 +579,54 @@ input:-webkit-autofill {
   margin-left: 10px;
 }
 
+.search_merchant_title {
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+.no_search_results_title {
+  font-size: 20px;
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+.no_search_results_details{
+  margin-left: 10px;
+}
+
 .accuracy_measure {
   font-family: "Arial", sans-serif;
   margin-left: 120px;
-  margin-top: 30px;
+  margin-top: 55px;
   color: #777C82;
   font-size: 16px;
 }
 
-.merchant_messages_window {
-  height: 0px;
+#merchant_messages_window {
+  height: 300px;
+}
+
+#message_column {
+  height: 300px;
+}
+
+#message_textarea{
+  width: 100%;
+  height: 50px;
+  border: none;
+  font-size: 14px;
+}
+
+#message_textarea:focus {
+  outline:0;
 }
 
 #extras_area {
   padding-top: 85px;
   width: 200px;
-  height: 360px;
+  height: 480px;
   float: left;
   margin-left: 30px;
   margin-top: 120px;
@@ -703,7 +817,7 @@ input:-webkit-autofill {
 }
 
 .confirmToOpenStripe {
-  position: fixed;
+  position: absolute;
   cursor: pointer;
   font-family: "Arial", sans-serif;
   cursor: pointer;
@@ -756,4 +870,27 @@ input:-webkit-autofill {
 
 #originalExtrasContainer{
   display: none;
+}
+
+#scroll_messages{
+
+}
+
+.message_item{
+  border-radius: 20px;
+  padding: 8px 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.message_item#green{
+  float: right;
+  text-align: left;
+  width: fit-content;
+  color: white;
+  margin-left: 55%;
+  margin-right: 15px;
+  background: rgb(0, 120, 254);
+  position: relative;
 }

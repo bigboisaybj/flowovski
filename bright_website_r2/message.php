@@ -32,32 +32,38 @@ if(isset($_POST['merchantID'])){
 
 }
 
-if(isset($_POST['post_message'])) {
+$data = array();
 
-	if(isset($_POST['message_body'])) {
-		$body = mysqli_real_escape_string($con, $_POST['message_body']);
-		$date = date("Y-m-d H:i:s");
-		$message_obj->sendMessage($merchantName, $userLoggedIn, $body, $date);
-	}
-}
+array_push($data, $userLoggedIn);
+array_push($data, $merchantName);
+array_push($data, $merchantID);
 
-?>
+$data_json = json_encode($data);
 
-<div class="messages" id="message_column">
+$str =  "<div class='messages_$merchantName' id='message_column'>
 
-  <?php
+					<div class='loaded_messages_$merchantName' id='scroll_messages' style='height:300px; overflow:scroll'>".
+						$message_obj->getMessages($merchantName)
+					."</div>
 
-	echo "<h4>$merchantName</h4><hr><br>";
+					<hr>
 
-   ?>
+				   <div class='message_post'>
 
-   <div class="loaded_messages">
-     <form action="#" method="POST">
+						 <textarea name='message_body' class='message_input_$merchantName' id='message_textarea' placeholder='Write your message ...' onkeyup='enterKeySubmit($data_json, ".event.", ".this.")'></textarea>
 
-			<textarea name='message_body' id='message_textarea' placeholder='Write your message ...'></textarea>
-			<input type='submit' name='post_message' class='info' id='message_submit' value='Send'>
+				</div>";
 
 
-		</form>
+				?>
 
-</div>
+				<script>
+
+				var div = document.getElementById("scroll_messages");
+				div.scrollTop = div.scrollHeight;
+
+				</script>
+
+				<?php
+
+echo $str;
