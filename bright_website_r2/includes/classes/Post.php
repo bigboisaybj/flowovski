@@ -78,7 +78,7 @@ class Post {
                       </div>
 
                       <div class='templateCHAT'>
-                        <input type='submit' class='chatButton' id='chatButton_$merchant_id' value='Message' onclick='openMessages($merchant_id)' style='text-decoration: none'>
+                        <input type='submit' class='chatButton' id='chatButton_$merchant_id' value='Message' onclick='openMessages($merchant_id)' style='color: none'>
                       </div>
 
                       <div class='templateTOTALCUSTOMERS' id='customers_$merchant_id' onclick='openMerchantItemsDisplay($merchant_id)'>
@@ -101,9 +101,9 @@ class Post {
                       </div>
 
                       <div class='merchant_gallery'>
-                        <img src=$profile_pic width='640px' height='360px' id='merchant_photos_$merchant_id'>
+                      <img src=$profile_pic width='640px' height='360px' id='merchant_photos_$merchant_id'>
                         <div id='merchant_messages_window' class='merchant_window_$merchant_id' style='height:0px; border:none;'></div>
-                       		<input type='hidden' id='merchant_message_type'>
+                          <input type='hidden' id='merchant_message_type'>
 
                       </div>
 
@@ -534,13 +534,15 @@ class Post {
 
             $searchedMerchantItems = new Item($this->con, $userLoggedIn, $merchant_name, $merchant_id, $total_customers_commas, $distance, $waitingTime, $long, $lat, $profile_pic);
 
+            $total_customers_commas = number_format($total_customers_commas);
+
             $str .=
 
                   "
 
                   <div class='templateCard'>
 
-                  <div class=merchant_$merchant_id>
+                  <div class='merchant_$merchant_id'>
 
                     <div class='merchant_tabs'>
 
@@ -549,10 +551,10 @@ class Post {
                       </div>
 
                       <div class='templateCHAT'>
-                        <input type='submit' value='Message' onclick='openMessages($merchant_id)' style='text-decoration: none'>
+                        <input type='submit' class='chatButton' id='chatButton_$merchant_id' value='Message' onclick='openMessages($merchant_id)' style='text-decoration: none'>
                       </div>
 
-                      <div class='templateTOTALCUSTOMERS'>
+                      <div class='templateTOTALCUSTOMERS' id='customers_$merchant_id' onclick='openMerchantItemsDisplay($merchant_id)'>
                         $total_customers_commas<br>customers
                       </div>
 
@@ -572,7 +574,7 @@ class Post {
                       </div>
 
                       <div class='merchant_gallery'>
-                        <img src=$profile_pic width='640px' height='360px' id='merchant_photos'>
+                      <img src=$profile_pic width='640px' height='360px' id='merchant_photos_$merchant_id'>
                         <div id='merchant_messages_window' class='merchant_window_$merchant_id' style='height:0px; border:none;'></div>
                           <input type='hidden' id='merchant_message_type'>
 

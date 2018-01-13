@@ -242,7 +242,8 @@ if (mysqli_num_rows($product_query) > 0) {
               </div>
 
               <div class='templateCHAT'>
-                <input type='submit' value='Message' onclick='openMessages($merchant_id)' style='text-decoration: none'>
+                <input type='submit' class='chatButton' id='chatButton_$merchantID' value='Message' onclick='openMessages($merchantID)' style='text-decoration: none'>
+
               </div>
 
               <div class='templateTOTALCUSTOMERS'>

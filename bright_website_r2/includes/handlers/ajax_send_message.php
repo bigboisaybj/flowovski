@@ -9,6 +9,7 @@ if(isset($_POST['merchantName'])){
   $merchantName = $_POST['merchantName'];
   $userLoggedIn = $_POST['userName'];
   $message = $_POST['message'];
+  $merchantID = $_POST['merchantID'];
 
   $body = strip_tags($message); //removes html tags
   $body = mysqli_real_escape_string($db, $body);
@@ -21,12 +22,15 @@ if(isset($_POST['merchantName'])){
 
     <script>
 
-    var div = document.getElementById("scroll_messages");
+    var merchantID = '<?php echo $merchantID; ?>';
+
+    var div = document.getElementById("scroll_messages_"+merchantID);
     div.scrollTop = div.scrollHeight;
 
     </script>
 
     <?php
+
 
     echo $data = "<div class='message_item' id='green'>" . $message . "</div><br><br>";
 

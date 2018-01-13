@@ -40,9 +40,9 @@ array_push($data, $merchantID);
 
 $data_json = json_encode($data);
 
-$str =  "<div class='messages_$merchantName' id='message_column'>
+$str =  "<div class='messages_$merchantID' id='message_column'>
 
-					<div class='loaded_messages_$merchantName' id='scroll_messages' style='height:300px; overflow:scroll'>".
+					<div class='loaded_messages_$merchantID' id='scroll_messages_$merchantID' style='height:300px; overflow:scroll'>".
 						$message_obj->getMessages($merchantName)
 					."</div>
 
@@ -50,16 +50,19 @@ $str =  "<div class='messages_$merchantName' id='message_column'>
 
 				   <div class='message_post'>
 
-						 <textarea name='message_body' class='message_input_$merchantName' id='message_textarea' placeholder='Write your message ...' onkeyup='enterKeySubmit($data_json, ".event.", ".this.")'></textarea>
+						 <textarea name='message_body' class='message_input_$merchantID message_textarea' id='message_textarea_$merchantID' placeholder='Write your message ...' onkeyup='enterKeySubmit($data_json, ".event.", ".this.")'></textarea>
 
 				</div>";
 
 
 				?>
 
+
 				<script>
 
-				var div = document.getElementById("scroll_messages");
+				var merchantID = '<?php echo $merchantID; ?>';
+
+				var div = document.getElementById("scroll_messages_"+merchantID);
 				div.scrollTop = div.scrollHeight;
 
 				</script>

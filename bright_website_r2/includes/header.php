@@ -12,11 +12,14 @@ include("includes/classes/SearchHistory.php");
 include("includes/classes/stripe/OrderProcess.php");
 
 $userLoggedIn = "";
+$userMerchant = "";
 
 if (isset($_SESSION['username'])) {
 	$userLoggedIn = $_SESSION['username'];
 	$user_details_query = mysqli_query($con, "SELECT * FROM users WHERE username='$userLoggedIn'");
 	$user = mysqli_fetch_array($user_details_query);
+
+	$userMerchant = $user['merchant_manager'];
 }
 
 ?>
@@ -27,7 +30,7 @@ if (isset($_SESSION['username'])) {
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="assets/js/bright.js"></script>
-	<script src="https://js.stripe.com/v3/"></script>
+	<!-- <script src="https://js.stripe.com/v3/"></script> -->
 	<script>
 
 	var username = '<?php echo $userLoggedIn; ?>';
@@ -44,7 +47,7 @@ if (isset($_SESSION['username'])) {
   <div class="container">
     <div id="inner">
       <div class="header_title child" id='bright_top_left_text'>
-				<a href='#' style="text-decoration: none">
+				<a href='index.php' style="text-decoration: none">
           Bright
 				</a>
       </div>
@@ -61,7 +64,7 @@ if (isset($_SESSION['username'])) {
       <div class="header_tabs child">
         <ul>
           <li id="user_header_title">
-            <a href="javascript:void(0);" onclick="showUserHeader('user_account', '<?php echo $userLoggedIn; ?>')" style="text-decoration: none">
+            <a href="javascript:void(0);" onclick="showUserHeader('user_account', '<?php echo $userLoggedIn; ?>', '<?php echo $userMerchant; ?>')" style="text-decoration: none">
             <?php
             if ($userLoggedIn != "") {
               echo $user['first_name'];

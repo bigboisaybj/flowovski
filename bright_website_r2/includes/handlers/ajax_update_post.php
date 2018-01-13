@@ -3,7 +3,7 @@
 $str = "";
 
   if(isset($_POST['merchantID'])) {
-    
+
     $merchant_id = $_POST['merchantID'];
     $total_customers_commas = $_POST['totalCustomers'];
     $merchant_name = $_POST['merchantName'];
@@ -18,6 +18,7 @@ $str = "";
     $itemHealth = $_POST['itemHealth'];
     $itemPrice = $_POST['itemPrice'];
 
+
     $str .=
 
             "
@@ -28,7 +29,7 @@ $str = "";
                 </div>
 
                 <div class='templateCHAT'>
-                  <input type='submit' value='Message' onclick='openMessages($merchant_id)' style='text-decoration: none'>
+                <input type='submit' class='chatButton' id='chatButton_$merchant_id' value='Message' onclick='openMessages($merchant_id)' style='text-decoration: none'>
                 </div>
 
                 <div class='templateTOTALCUSTOMERS'>
