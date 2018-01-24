@@ -24,8 +24,8 @@ $str = "";
             "
               <div class='merchant_$merchant_id'>
 
-                <div class='templateSHARE'>
-                  Share
+                <div class='templateBOOK'>
+                  Reserve
                 </div>
 
                 <div class='templateCHAT'>

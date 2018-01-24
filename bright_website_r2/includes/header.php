@@ -1,5 +1,6 @@
 <?php
 require 'config/config.php';
+include("includes/zeus/hercules_stack.php");
 include("includes/classes/User.php");
 include("includes/classes/Post.php");
 include("includes/classes/Item.php");

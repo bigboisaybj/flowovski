@@ -73,8 +73,8 @@ class Post {
 
                     <div class='merchant_tabs'>
 
-                      <div class='templateSHARE' id='share_$merchant_id'>
-                        Share
+                      <div class='templateBOOK' id='share_$merchant_id' onclick='openMerchantBooking($merchant_id)'>
+                        Reserve
                       </div>
 
                       <div class='templateCHAT'>
@@ -546,8 +546,8 @@ class Post {
 
                     <div class='merchant_tabs'>
 
-                      <div class='templateSHARE'>
-                        Share
+                      <div class='templateBOOK'>
+                        Reserve
                       </div>
 
                       <div class='templateCHAT'>

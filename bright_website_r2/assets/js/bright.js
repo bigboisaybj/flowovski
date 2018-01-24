@@ -16,73 +16,9 @@ var venueAddress = "";
 var merchantRegoName = "";
 var usr = "";
 var allergenInWriting = "";
+var lastTime = 0;
+var hercules = new Array();
 
-  function initAutocomplete() {
-      // Create the autocomplete object, restricting the search to geographical
-      // location types.
-      autocomplete = new google.maps.places.Autocomplete(
-          /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-          {types: ['geocode']});
-
-      // When the user selects an address from the dropdown, populate the address
-      // fields in the form.
-      autocomplete.addListener('place_changed', fillInAddress);
-    }
-
-  function fillInAddress() {
-      venueAddress = "";
-      // Get the place details from the autocomplete object.
-      var place = autocomplete.getPlace();
-
-      // Get each component of the address from the place details
-      // and fill the corresponding field on the form.
-      for (var i = 0; i < place.address_components.length; i++) {
-        var addressType = place.address_components[i].types[0];
-        if (componentForm[addressType]) {
-          var val = place.address_components[i][componentForm[addressType]];
-          var temp = val + " ";
-          venueAddress += temp ;
-          //document.getElementById(addressType).value = val;
-        }
-      }
-    }
-
-    // Bias the autocomplete object to the user's geographical location,
-    // as supplied by the browser's 'navigator.geolocation' object.
-    function geolocate() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          var geolocation = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-          var circle = new google.maps.Circle({
-            center: geolocation,
-            radius: position.coords.accuracy
-          });
-          autocomplete.setBounds(circle.getBounds());
-        });
-      }
-    }
-
-function processUserInputForUserNameChange(data){
-
-  usrChange = document.getElementById('account_user_name_change_input').value;
-
-  if(usrChange != " "){
-    usrChangeLogDetails = data;
-
-    $.ajax({
-
-      url: "includes/handlers/user_settings/ajax_update_username.php",
-      type: "POST",
-      data: {
-            userName: usrChange,
-            originalUser: data,
-      },
-    });
-  }
-}
 
 $(document).ready(function() {
 
@@ -119,15 +55,101 @@ $(document).ready(function() {
 
 });
 
+function initAutocomplete() {
+    // Create the autocomplete object, restricting the search to geographical
+    // location types.
+    autocomplete = new google.maps.places.Autocomplete(
+        /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+        {types: ['geocode']});
+
+    // When the user selects an address from the dropdown, populate the address
+    // fields in the form.
+    autocomplete.addListener('place_changed', fillInAddress);
+  }
+
+function fillInAddress() {
+    venueAddress = "";
+    // Get the place details from the autocomplete object.
+    var place = autocomplete.getPlace();
+
+    // Get each component of the address from the place details
+    // and fill the corresponding field on the form.
+    for (var i = 0; i < place.address_components.length; i++) {
+      var addressType = place.address_components[i].types[0];
+      if (componentForm[addressType]) {
+        var val = place.address_components[i][componentForm[addressType]];
+        var temp = val + " ";
+        venueAddress += temp ;
+        //document.getElementById(addressType).value = val;
+      }
+    }
+  }
+
+  // Bias the autocomplete object to the user's geographical location,
+  // as supplied by the browser's 'navigator.geolocation' object.
+  function geolocate() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var geolocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        var circle = new google.maps.Circle({
+          center: geolocation,
+          radius: position.coords.accuracy
+        });
+        autocomplete.setBounds(circle.getBounds());
+      });
+    }
+  }
+
+function processUserInputForUserNameChange(data){
+
+usrChange = document.getElementById('account_user_name_change_input').value;
+
+if(usrChange != " "){
+  usrChangeLogDetails = data;
+
+  $.ajax({
+
+    url: "includes/handlers/user_settings/ajax_update_username.php",
+    type: "POST",
+    data: {
+          userName: usrChange,
+          originalUser: data,
+    },
+  });
+}
+}
+
 function messageFocus(elem){
   var x = window.scrollX, y = window.scrollY;
   elem.focus();
   window.scrollTo(x,y);
 }
 
+function openMerchantBooking(merchantID){
+
+      var ajaxreq = $.ajax({
+      url: "booking.php",
+      type: "POST",
+      data: "merchantID=" + merchantID,
+
+      success: function(response) {
+        $(".merchant_window_"+merchantID).html(response);
+        $(".merchant_window_"+merchantID).css({"padding" : "0px", "height" : "360px"});
+        $("#merchant_photos_"+merchantID).css({"padding" : "0px", "height" : "0px"});
+        $("#chatButton_"+merchantID).css({"color" : "#6E6E7A"});
+        $("#customers_"+merchantID).css({"color" : "#6E6E7A"});
+        $("#share_"+merchantID).css({"color" : "#0070c9"});
+      }
+    });
+
+
+}
+
 function openMessages(merchantID){
 
-  if($(".merchant_window_"+merchantID).css("height") == "0px") {
       var ajaxreq = $.ajax({
       url: "message.php",
       type: "POST",
@@ -139,25 +161,10 @@ function openMessages(merchantID){
         messageFocus(document.getElementById('message_textarea_'+merchantID));
         $("#merchant_photos_"+merchantID).css({"padding" : "0px", "height" : "0px"});
         $("#chatButton_"+merchantID).css({"color" : "#0070c9"});
-
-        if($("#customers_"+merchantID).css("color") != "#6E6E7A"){
-          $("#customers_"+merchantID).css({"color" : "#6E6E7A"});
-        }
+        $("#customers_"+merchantID).css({"color" : "#6E6E7A"});
+        $("#share_"+merchantID).css({"color" : "#6E6E7A"});
       }
     });
-  }
-
-  if($(".merchant_window_"+merchantID).css("height") != "0px") {
-    $(".merchant_window_"+merchantID).html("");
-    $(".merchant_window_"+merchantID).css({"padding" : "0px", "height" : "0px"});
-    $("#merchant_photos_"+merchantID).css({"padding" : "0px", "height" : "360px"});
-    $("#chatButton_"+merchantID).css({"color" : "#6E6E7A"});
-
-    if($("#customers_"+merchantID).css("color") != "#0070c9"){
-      $("#customers_"+merchantID).css({"color" : "#0070c9"});
-    }
-
-  }
 }
 
 function openMerchantItemsDisplay(merchantID){
@@ -167,10 +174,8 @@ function openMerchantItemsDisplay(merchantID){
     $(".merchant_window_"+merchantID).css({"padding" : "0px", "height" : "0px"});
     $("#merchant_photos_"+merchantID).css({"padding" : "0px", "height" : "360px"});
     $("#chatButton_"+merchantID).css({"color" : "#6E6E7A"});
-
-    if($("#customers_"+merchantID).css("color") != "#0070c9"){
-      $("#customers_"+merchantID).css({"color" : "#0070c9"});
-    }
+    $("#customers_"+merchantID).css({"color" : "#0070c9"});
+    $("#share_"+merchantID).css({"color" : "#6E6E7A"});
 
   }
 
@@ -180,6 +185,33 @@ function enterKeySubmit(data, key, element){
   if(key.keyCode === 13) {
     sendMessage(data,element);
   }
+}
+
+function enterKeySubmit_help(data, key, element){
+  if(key.keyCode === 13) {
+    send_help_message(data,element);
+  }
+}
+
+function send_help_message(data, element){
+
+  var message = document.getElementById("message_textarea_help").value;
+
+  element.value = '';
+
+  $.ajax({
+    url: "includes/handlers/help_chat/help_send_message.php",
+    type: "POST",
+    data: {
+        userName: data,
+        message: message,
+    },
+    success: function(response){
+      $(".loaded_messages_help").append(response);
+
+    }
+
+  });
 }
 
 function sendMessage(data, element){
@@ -391,6 +423,61 @@ function uploadMenu(){
       }
   });
 }
+
+function processReservationDate(data){
+
+  var reservationTime = document.getElementsByClassName("booking_where_"+merchantId)[0].value;
+
+  //"Today"
+
+}
+
+function processReservationTime(data){
+
+  var merchantId = data[0];
+  var longitude = data[1];
+  var latitude = data[2];
+
+  var reservationTime = document.getElementsByClassName("booking_time_"+merchantId)[0].value;
+
+    if((reservationTime.includes(":")) && (reservationTime.includes("am")) || (reservationTime.includes("AM")) || (reservationTime.includes("pm")) || (reservationTime.includes("PM"))) {
+      reservationTime = convertAmPmToTime(reservationTime);
+    }
+
+    else if (reservationTime.includes(":")) {
+      reservationTime = convertColonToTime(reservationTime);
+    }
+
+    else{
+        if((reservationTime.includes("am")) || (reservationTime.includes("AM")) || (reservationTime.includes("pm")) || (reservationTime.includes("PM"))) {
+          reservationTime = convertAmPmToTime(reservationTime);
+        }
+        else{
+          reservationTime = convertTwentyFourToTime(reservationTime);
+        }
+    }
+
+    if(reservationTime != null){
+      console.log(reservationTime);
+      console.log("LONG: " + longitude);
+      console.log("LAT: " + latitude);
+      //Get weather report
+      $.ajax({
+        url: "includes/handlers/booking/get_weather.php",
+        type: "POST",
+        data: {
+              reservationTime: reservationTime,
+              longitude: longitude,
+              latitude: latitude,
+        },
+        success: function(response){
+          $('#booking_weather_'+merchantId).html();
+        }
+
+      });
+    }
+}
+
 
 function showSubmitRegistration(){
 
@@ -735,10 +822,22 @@ function closeSettingsOptions(settingSelected){
     $(".settings_about_category").css({"visibility":"hidden"});
     $(".logout").css({"visibility":"hidden"});
   }
+
+  if(settingSelected == "About"){
+    if(document.getElementById("showOthersOption") == null){
+      $(".settings_about_category").append(showRest);
+    }
+    $(".settings_business_category").css({"visibility":"hidden"});
+    $(".settings_account_category").css({"visibility":"hidden"});
+    $(".settings_payment_category").css({"visibility":"hidden"});
+    $(".settings_diet_category").css({"visibility":"hidden"});
+    $(".settings_help_category").css({"visibility":"hidden"});
+    $(".logout").css({"visibility":"hidden"});
+  }
+
 }
 
 function liveFAQSearch(data, userName){
-
 
   var pathName = "includes/handlers/faq/ajax_search_faq.php";
 
@@ -753,7 +852,6 @@ function liveFAQSearch(data, userName){
     success: function(response){
       $("#settings_selection_Help").html(response);
     }
-
 
   });
 
@@ -824,7 +922,11 @@ function addAllergen(data){
 
 }
 
+
+
 function openUserContactWindow(userName, email, phone){
+
+  userTracker_Settings("Account");
 
   pathName = "includes/handlers/user_settings/ajax_update_contact_details.php";
 
@@ -844,9 +946,64 @@ function openUserContactWindow(userName, email, phone){
     });
 }
 
+
+function userTracker_Settings(identifier, userName){
+
+  console.log(identifier);
+  console.log(userName);
+
+  var user_context = "";
+
+  if(identifier == "Business"){
+    user_context = "58867dba526843ce9b3aae69a4f1d1e3";
+  }
+  else if(identifier == "Account"){
+    user_context = "b806ef95d125872d1e72133d96464938";
+  }
+  else if(identifier == "Diet"){
+    user_context = "1311f004aa1a268e4309afbb26dcaf1b";
+  }
+  else if(identifier == "Payment"){
+    user_context = "067980ba0b78d4f6a134fb324d2e5b23";
+  }
+  else if(identifier == "Help"){
+    user_context = "adac9bba354ed200c0549665c3801d4e";
+  }
+  else if(identifier == "About"){
+    user_context = "6f58344db84efc46ba42efac4a5de557";
+  }
+
+  $.ajax({
+    url: "includes/zeus/hercules_stack.php",
+    type: "POST",
+    data: {
+          userName: userName,
+          hercules: user_context,
+    },
+    success: function(response){
+      console.log(response);
+    }
+
+  });
+
+  $.ajax({
+
+    url: "includes/zeus/mars_uploader.php",
+    type: "POST",
+    data: {
+
+          tracker: user_context,
+    },
+    success: function(response){
+      console.log(response);
+    }
+  });
+}
+
 function openSettingsWindow(setting, firstName, selection, userName, lastName){
 
   closeSettingsOptions(selection);
+  userTracker_Settings(selection, userName);
 
   var pathName = "";
 
@@ -873,6 +1030,24 @@ function openSettingsWindow(setting, firstName, selection, userName, lastName){
   }
   else if(setting == 'Allergies'){
     pathName = "includes/handlers/allergies/ajax_update_allergies.php";
+  }
+  else if(setting == 'FAQ'){
+    pathName = "includes/handlers/faq/ajax_cache.php";
+  }
+  else if(setting == 'Chat'){
+    pathName = "includes/handlers/help_chat/help_chat.php";
+  }
+  else if(setting == 'Privacy'){
+    pathName = "includes/handlers/privacy/privacy_home.php";
+  }
+  else if(setting == 'Team'){
+    pathName = "includes/handlers/team/bigboisaybj.php";
+  }
+  else if(setting == 'Goal'){
+    pathName = "includes/handlers/goal/goal.php";
+  }
+  else if(setting == 'Chapters'){
+    pathName = "includes/handlers/chapters/one.php";
   }
 
   $.ajax({

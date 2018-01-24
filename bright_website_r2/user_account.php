@@ -202,7 +202,7 @@ if (isset($_SESSION['username'])) {
 
 		</div>
 	</div>
-	<div class='settings_title_two'>
+	<div class='settings_title_two' onclick="openSettingsWindow('Chat', '<?php echo $userFirstName; ?>', 'Help', '<?php echo $userLoggedIn; ?>', '<?php echo $userEmail; ?>')">
 		Chat
 		<div class='settings_two_description'>
 			To: Bright
@@ -211,16 +211,16 @@ if (isset($_SESSION['username'])) {
 			Message:
 		</div>
 	</div>
-	<div class='settings_title_three'>
-		Legal
+	<div class='settings_title_three' onclick="openSettingsWindow('Privacy', '<?php echo $userFirstName; ?>', 'Help', '<?php echo $userLoggedIn; ?>', '<?php echo $userEmail; ?>')">
+		Privacy
 		<div class='settings_three_description'>
-			Security and privacy are important. Learn how we protect you.
+			Privacy and online safety are important.
 		</div>
 	</div>
 </div>
 <br>
 <hr>
-<div class='settings_selection_Help'>
+<div class='settings_selection' id='settings_selection_Help'>
 	<!--Default region -->
 </div>
 </div>
@@ -230,19 +230,19 @@ if (isset($_SESSION['username'])) {
 	<h4>About</h4>
 </div>
 <div class='settings_detail'>
-	<div class='settings_title_one'>
+	<div class='settings_title_one' onclick="openSettingsWindow('Team', '<?php echo $userFirstName; ?>', 'About', '<?php echo $userLoggedIn; ?>', '<?php echo $userEmail; ?>')">
 		Team
 		<div class='settings_one_description'>
 			Just one engineer.
 		</div>
 	</div>
-	<div class='settings_title_two'>
+	<div class='settings_title_two' onclick="openSettingsWindow('Goal', '<?php echo $userFirstName; ?>', 'About', '<?php echo $userLoggedIn; ?>', '<?php echo $userEmail; ?>')">
 		Goal
 		<div class='settings_two_description'>
 			Human-Level Machine Intelligence
 		</div>
 	</div>
-	<div class='settings_title_three'>
+	<div class='settings_title_three' onclick="openSettingsWindow('Chapters', '<?php echo $userFirstName; ?>', 'About', '<?php echo $userLoggedIn; ?>', '<?php echo $userEmail; ?>')">
 		Chapter One: Launch
 		<div class='settings_three_description'>
 			Ladies and gentlemen...
@@ -251,7 +251,7 @@ if (isset($_SESSION['username'])) {
 </div>
 <br>
 <hr>
-<div class='settings_selection'>
+<div class='settings_selection' id='settings_selection_About'>
 	<!--Default region -->
 </div>
 </div>

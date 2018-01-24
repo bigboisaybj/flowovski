@@ -237,8 +237,8 @@ if (mysqli_num_rows($product_query) > 0) {
 
             <div class='merchant_$merchantID'>
 
-              <div class='templateSHARE'>
-                Share
+              <div class='templateBOOK'>
+                Reserve
               </div>
 
               <div class='templateCHAT'>
