@@ -1,0 +1,1916 @@
+html {
+  overflow: scroll;
+  height: 100%;
+  width: 100%;
+}
+
+body{
+padding:0px;
+margin-left: 8px;
+margin-top: 0px;
+}
+
+h1 {
+  font-size: 32px;
+  color: black;
+  width: auto;
+  margin-left: 10px;
+  font-family: "Arial", sans-serif;
+}
+
+h2 {
+  font-size: 28px;
+  color: black;
+  width: auto;
+  font-family: "Arial", sans-serif;
+}
+
+h4 {
+  font-weight: lighter;
+}
+
+a {
+  color: black;
+}
+
+ul {
+  height: 15px;
+  margin-left: 630px;
+  margin-top: 24px;
+  text-align: right;
+  padding: 0;
+}
+
+ul li {
+  color: black;
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-family: "Arial", sans-serif;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
+
+textarea {
+    resize: none;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#cont {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+#inner {
+  position: absolute;
+  z-index: 10;
+  overflow: hidden;
+  width: 100%;
+  height: 80px;
+  background-color: white;
+}
+
+.child {
+  float: left;
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  height: 20px;
+  position: fixed;
+  margin-bottom: 60px;
+  z-index: 9;
+}
+
+.header_title {
+  font-size: 32px;
+  font-family: "Arial", sans-serif;
+  font-weight: bolder;
+  margin-left: 10px;
+  margin-top: 13px;
+  text-decoration: none;
+}
+
+.header_tabs {
+  height: 20px;
+  margin-left: 400px;
+}
+
+#allergies_list{
+  cursor: pointer;
+  color: #0070c9;
+  width: 522px;
+  background: transparent;
+  border: none;
+  margin-top: 20px;
+  margin-bottom: 3px;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+#autocomplete{
+  color: black;
+  width: 522px;
+  background: transparent;
+  border: none;
+  margin-bottom: 3px;
+  border-bottom: 1px solid #6e6e7ad1;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+#account_user_name_change_input{
+  color: black;
+  width: 150px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #6e6e7ad1;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+#account_user_change_password{
+  color: black;
+  width: 300px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #6e6e7ad1;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+#account_user_change_phone{
+  color: black;
+  width: 150px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #6e6e7ad1;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+#account_user_change_password{
+  color: black;
+  width: 300px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #6e6e7ad1;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+#account_user_change_email{
+  color: black;
+  width: 300px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #6e6e7ad1;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+#diet_allergies{
+  color: black;
+  width: 150px;
+  background: transparent;
+  border: none;
+  margin-bottom: 3px;
+  border-bottom: 1px solid #6e6e7ad1;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+#settings_business_venueName_input{
+  color: black;
+  width: 300px;
+  background: transparent;
+  border: none;
+  margin-bottom: 3px;
+  border-bottom: 1px solid #6e6e7ad1;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+#search_faq_input {
+  color: #6e6e7ad1;
+  width: 130px;
+  background: transparent;
+  border: none;
+  margin-top: 13px;
+  margin-bottom: 3px;
+  border-bottom: 1px solid #6e6e7ad1;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+#search_text_input {
+  color: black;
+  width: 400px;
+  background: transparent;
+  border: none;
+  margin-left: 18px;
+  margin-top: 22px;
+  margin-bottom: 3px;
+  border-bottom: 1px solid #000000;
+  font-size: 20px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+#booking_where_input{
+  color: black;
+  width: 150px;
+  background: transparent;
+  border: none;
+  margin-top: 22px;
+  margin-bottom: 3px;
+  border-bottom: 1px solid #000000;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+#booking_when_input{
+  color: black;
+  width: 150px;
+  background: transparent;
+  border: none;
+  margin-top: 22px;
+  margin-bottom: 3px;
+  border-bottom: 1px solid #000000;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+#booking_who_input{
+  color: black;
+  width: 150px;
+  background: transparent;
+  border: none;
+  margin-top: 22px;
+  margin-bottom: 3px;
+  border-bottom: 1px solid #000000;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+.custom_file_upload{
+  display: inline-block;
+  padding-bottom: 12px;
+  cursor: pointer;
+  margin-top: 5px;
+  width: 200px;
+  height: 25px;
+  color: #0070c9;
+}
+
+.file_upload_title{
+}
+
+#result {
+  position: absolute;
+  top: 100%;
+  left: 15%;
+  font-size: 30px;
+}
+
+.posts_area{
+  margin-top: 57px;
+}
+
+.dropdown_user_window {
+  border: none;
+  width: auto;
+  margin-top: 54px;
+  margin-left: 120px;
+  float: left;
+  z-index: 0;
+}
+
+.registration_login_section {
+  width: 600;
+  margin-top: 55px;
+  margin-right: 25px;
+  margin-bottom: 30px;
+}
+
+.or_login{
+  margin-bottom: 20px;
+  color: #777C82;
+}
+
+.manual_input_text{
+  font-size: 20px;
+  color: #777C82;
+  width: auto;
+  font-family: "Arial", sans-serif;
+  margin-bottom: 25px;
+  cursor: pointer;
+}
+
+.connect_title_text{
+  font-size: 20px;
+  color: black;
+  width: auto;
+  font-family: "Arial", sans-serif;
+  margin-bottom: 25px;
+}
+
+.login_title_text{
+  font-size: 20px;
+  color: #777C82;
+  width: auto;
+  font-family: "Arial", sans-serif;
+  margin-bottom: 25px;
+}
+
+.about_section {
+  font-size: 16px;
+  color: black;
+  width: auto;
+  font-family: "Arial", sans-serif;
+  width: 600px;
+  float: right;
+  margin-top: 53px;
+  margin-right: 25px;
+}
+
+.careers_section {
+  font-size: 16px;
+  color: black;
+  width: auto;
+  font-family: "Arial", sans-serif;
+  width: 600px;
+  float: right;
+  margin-top: 59px;
+  margin-right: 25px;
+}
+
+.user_account_page {
+  font-size: 16px;
+  color: black;
+  width: auto;
+  font-family: "Arial", sans-serif;
+  width: 600px;
+  float: right;
+  margin-right: 25px;
+}
+
+.error_block {
+  margin-left: 30px;
+  font-family: "Arial", sans-serif;
+  color: #ea0a0ade;
+}
+
+input[name="log_email"] {
+  width: 300px;
+  background: transparent;
+  border: none;
+  margin-top: 10px;
+  border-bottom: 1px solid #000000;
+  font-size: 17px;
+  outline: none;
+}
+
+input[name="log_password"] {
+  width: 100px;
+  background: transparent;
+  border: none;
+  margin-top: 10px;
+  border-bottom: 1px solid #000000;
+  font-size: 17px;
+  outline: none;
+}
+
+input[name="reg_fname"] {
+  width: 200px;
+  background: transparent;
+  border: none;
+  margin-top: 10px;
+  border-bottom: 1px solid #000000;
+  font-size: 17px;
+  outline: none;
+}
+
+input[name="reg_lname"] {
+  width: 200px;
+  background: transparent;
+  border: none;
+  margin-top: 10px;
+  border-bottom: 1px solid #000000;
+  font-size: 17px;
+  outline: none;
+}
+
+input[name="reg_email"] {
+  width: 300px;
+  background: transparent;
+  border: none;
+  margin-top: 10px;
+  border-bottom: 1px solid #000000;
+  font-size: 17px;
+  outline: none;
+}
+
+input[name="reg_password"] {
+  width: 100px;
+  background: transparent;
+  border: none;
+  margin-top: 10px;
+  border-bottom: 1px solid #000000;
+  font-size: 17px;
+  outline: none;
+}
+
+input[name="login_button"] {
+  margin-left: 20px;
+  border: none;
+  font-family: "Arial", sans-serif;
+  color: #0070c9;
+  font-size: 17px;
+  outline: none;
+  cursor:pointer;
+}
+
+input[name="register_button"] {
+  margin-left: 20px;
+  border: none;
+  font-family: "Arial", sans-serif;
+  color: #0070c9;
+  font-size: 17px;
+  outline: none;
+  cursor:pointer;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
+
+#login_title {
+  font-family: "Arial", sans-serif;}
+
+#register_title {
+  font-family: "Arial", sans-serif;
+}
+
+.login_title a {
+  color: black;
+  opacity: 0.75;
+}
+
+.error_block {
+  margin-left: 30px;
+  font-family: "Arial", sans-serif;
+  color: #ea0a0ade;
+}
+
+#about_header_title {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#about_header_title:hover {
+  border-bottom: 2px solid #0070c9;
+	color: #fff;
+}
+
+#user_header_title {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#user_header_title:hover {
+  border-bottom: 2px solid #0070c9;
+	color: #fff;
+}
+
+#careers_header_title {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#careers_header_title:hover {
+  border-bottom: 2px solid #0070c9;
+	color: #fff;
+}
+
+#bryan_jordan {
+  color: #0070c9;
+}
+
+.search_results {
+  margin-left: 110px;
+	float:left;
+	width: 1300px;
+	z-index: -1;
+}
+
+.resultDisplay {
+  margin-left: 20px;
+  margin-top: 20px;
+  font-size: 17px;
+}
+
+.liveSearchProfilePic img {
+  width: 100px;
+  height: 100px;
+}
+
+.templateCard {
+  font-family: "Arial", sans-serif;
+  margin-bottom: 50px;
+  width: 640px;
+  height: 600px;
+  float: left;
+}
+
+.templateTitle {
+  margin-top: 20px;
+  font-size: 4px;
+}
+
+.templateTOTALCUSTOMERS {
+  cursor: pointer;
+  float: right;
+  margin-right: 20px;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #0070c9;
+  text-align: center;
+}
+
+.templateCHAT {
+  float: right;
+  margin-right: 20px;
+  margin-top: 25px;
+  font-size: 14px;
+  color: #6E6E7A;
+}
+
+.templateBOOK {
+  cursor: pointer;
+  float: right;
+  margin-top: 26px;
+  font-size: 14px;
+  color: #6E6E7A;
+}
+
+.chatButton {
+  cursor: pointer;
+  float: right;
+  font-size: 14px;
+  color: #6E6E7A;
+  text-align: center;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.chatButton:focus{
+  outline:0;
+}
+
+#search_preview_third{
+  cursor: pointer;
+  float: right;
+  margin-top: 25px;
+  font-size: 14px;
+  color: #6E6E7A;
+  width: 70px;
+}
+
+#search_preview_second{
+  cursor: pointer;
+  float: right;
+  margin-right: 50px;
+  margin-top: 25px;
+  font-size: 14px;
+  color: #6E6E7A;
+  width: 70px;
+}
+
+#search_preview_first{
+  cursor: pointer;
+  float: right;
+  margin-right: 50px;
+  margin-top: 25px;
+  font-size: 14px;
+  color: #6E6E7A;
+  width: 70px;
+}
+
+.liveQueue {
+  margin-top: 20px;
+  margin-left: 10px;
+  width: 640px;
+  height: 50px;
+  overflow:hidden;
+  position:relative;
+}
+
+.search_item{
+  font-family: "Arial", sans-serif;
+  margin-bottom: 50px;
+  width: 640px;
+  height: 600px;
+  float: left;
+}
+
+.noSearchMatchings{
+  font-family: "Arial", sans-serif;
+  margin-bottom: 50px;
+  width: 640px;
+  height: 600px;
+  float: left;
+}
+
+.search_liveQueue {
+  margin-top: 50px;
+  margin-left: 10px;
+  width: 640px;
+  height: 35px;
+  background-color: #A1A8AF;
+}
+
+.merchant_gallery {
+  position: relative;
+  margin-top: 5px;
+  margin-left: 10px;
+  width: 640px;
+  height: 360px;
+  background-size: 640px 360px;
+}
+
+.merchant_product_title {
+  margin-top: 10px;
+}
+
+.merchant_product_description {
+  margin-top: 5px;
+  margin-left: 10px;
+  width: 300px;
+  height: 35px;
+  font-size: 14px;
+  color: #6E6E7A;
+}
+
+.merchant_product_health {
+  margin-top: 5px;
+  margin-left: 10px;
+  color: #6E6E7A;
+}
+
+.merchant_product_second_title {
+  margin-top: 10px;
+}
+
+.merchant_product_second_description {
+  margin-top: 5px;
+  margin-left: 10px;
+  width: 154px;
+  height: 35px;
+  font-size: 14px;
+  color: #6e6e7ad1;
+}
+
+.merchant_product_second_health {
+  margin-top: 5px;
+  margin-left: 10px;
+  color: #6e6e7ad1;
+}
+
+.merchant_product_third_title {
+  margin-top: 10px;
+}
+
+.merchant_product_third_description {
+  margin-top: 5px;
+  margin-left: 10px;
+  width: 130px;
+  height: 35px;
+  font-size: 14px;
+  color: #6e6e7ad1;
+}
+
+.merchant_product_third_health {
+  margin-top: 5px;
+  margin-left: 10px;
+  color: #6e6e7ad1;
+}
+
+.item_options {
+  margin-left: auto;
+  margin-right: auto;
+  height: 10%;
+  width: 80%;
+}
+
+.current_item {
+  float:left;
+}
+
+.second_item {
+  width: 130px;
+  color: #A1A8AF;
+  margin-left: 20px;
+  float:left;
+}
+
+#second_item {
+  width: 130px;
+  color: #A1A8AF;
+  margin-left: 20px;
+  float:left;
+  font-family: "Arial", sans-serif;
+  color: #0070c9;
+  border: none;
+}
+
+.third_item {
+  width: 134px;
+  float:right;
+  color: #A1A8AF;
+}
+
+.main_column {
+  margin-left: 110px;
+	float:left;
+	width: 1300px;
+}
+
+.merchant_box {
+  width: 200px;
+  height: 500px;
+  font-family: "Arial", sans-serif;
+  background-color: #fbfbfb;
+  border: 1px solid #d4d4d4;
+}
+
+.title {
+  font-size: 20px;
+}
+
+.merchant_title {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.search_merchant_title {
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+.no_search_results_title {
+  font-size: 20px;
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+.no_search_results_details{
+  margin-left: 10px;
+}
+
+.accuracy_measure {
+  font-family: "Arial", sans-serif;
+  margin-left: 120px;
+  margin-top: 55px;
+  color: #777C82;
+  font-size: 16px;
+}
+
+#merchant_messages_window {
+  height: 300px;
+}
+
+#message_column {
+  height: 300px;
+}
+
+.message_textarea{
+  width: 100%;
+  height: 50px;
+  border: none;
+  font-size: 16px;
+}
+
+.message_textarea:focus {
+  outline:0;
+}
+
+#extras_area {
+  padding-top: 110px;
+  width: 200px;
+  height: 600px;
+  float: left;
+  margin-left: 30px;
+  font-family: "Arial", sans-serif;
+  color: #777C82;
+  margin-bottom: 50px;
+}
+
+.purchase_area {
+  padding-top: 125px;
+  width: 400px;
+  height: 360px;
+  float: left;
+  margin-left: 10px;
+  margin-top: 108px;
+  margin-bottom: 50px;
+}
+
+.purchase_area:focus {
+  outline: none;
+}
+
+#extras_table {
+  align-items: center;
+}
+
+.StripeElement {
+  background-color: white;
+  height: 40px;
+  width: 400px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+
+}
+
+.StripeElement--focus {
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+#map {
+ height: 300px;
+ width: 100%;
+}
+
+#locationButton {
+  margin-top: 5px;
+  margin-left: 2px;
+  float: left;
+  font-family: "Arial", sans-serif;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #6E6E7A;
+}
+
+#locationButton:focus {
+  outline:0;
+}
+
+#first_item_button {
+  margin-left: 2px;
+  font-family: "Arial", sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+  color: #0070c9;
+  border: none;
+  font-weight: 100;
+}
+
+#first_item_button:focus {
+  outline:0;
+}
+
+.extras_options {
+  margin-left: 5px;
+}
+
+#extras_order_button {
+  font-family: "Arial", sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+  color: #0070c9;
+  border: none;
+  font-weight: 100;
+}
+
+#extras_order_button:focus {
+  outline:0;
+}
+
+#stripe_button {
+  font-family: "Arial", sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+  color: #0070c9;
+  border: none;
+  font-weight: 100;
+  float: left;
+}
+
+#stripe_button:focus {
+  outline:0;
+}
+
+.career_post {
+  margin-bottom: 50px;
+}
+
+.career_title{
+  color: #0070c9;
+  font-size: 18px;
+}
+
+.career_location{
+  margin-top: 5px;
+  color: #6E6E7A;
+}
+
+.career_summary {
+  margin-top: 20px;
+}
+
+.commitment {
+  margin-bottom: 10px;
+}
+
+#apply_career {
+  cursor: pointer;
+  color: #0070c9;
+  text-decoration: none;
+}
+
+.career_subheading {
+  color: #6E6E7A;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.extraArea {
+  width: 100%;
+  font-family: "Arial", sans-serif;
+  float: left;
+}
+
+#extrasTitle {
+  cursor: pointer;
+  margin-bottom: 10px;
+  color: #0070c9;
+}
+
+.extrasHealthAndPrice {
+  float: left;
+  margin-top: 3px;
+}
+
+.extrasVolume{
+  float: left;
+}
+
+.extras_summary {
+  margin-top: 10px;
+  font-family: "Arial", sans-serif;
+  font-size: 18px;
+  color: #0070c9;
+  border: none;
+  font-weight: 100;
+  width: 130px;
+  margin-left: 30px;
+  float:left;
+}
+
+.extras_item_list {
+  margin-top: 5px;
+  width: 154px;
+  height: 35px;
+  font-size: 14px;
+  color: #6e6e7ad1;
+}
+
+.extras_total {
+  margin-top: 5px;
+  color: #6e6e7ad1;
+}
+
+.confirmToOpenStripe {
+  position: absolute;
+  cursor: pointer;
+  font-family: "Arial", sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+  color: #0070c9;
+  border: none;
+  float: left;
+  margin-top: 25px;
+}
+
+#extra_list {
+  margin-top: 5px;
+  width: 130px;
+  font-size: 14px;
+  color: #6e6e7ad1;
+  float:left;
+}
+
+#total_item_title{
+  margin-top: 10px;
+  width: 134px;
+  float: right;
+  color: #0070c9;
+}
+
+#total_price_description{
+  margin-top: 5px;
+  width: 130px;
+  height: 35px;
+  font-size: 14px;
+  color: #A1A8AF;
+}
+
+#extra_title_list{
+  display: none;
+}
+
+#extraVolumeForm{
+  float: left;
+}
+
+.sliderExtra{
+  float: left;
+}
+
+.extraSliderOutput{
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+#originalExtrasContainer{
+  display: none;
+}
+
+#scroll_messages{
+
+}
+
+.message_item{
+  border-radius: 20px;
+  padding: 8px 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.message_item#green{
+  float: right;
+  text-align: left;
+  width: fit-content;
+  color: white;
+  margin-left: 55%;
+  margin-right: 15px;
+  background: rgb(0, 120, 254);
+}
+
+.settings_detail{
+  height: 80px;
+}
+
+.settings_title_one{
+  float: left;
+  margin-right: 40px;
+  color: #0070c9;
+  cursor: pointer;
+}
+
+.settings_one_description{
+  margin-top: 15px;
+  width: 180px;
+  color: #6E6E7A;
+}
+
+.settings_title_three{
+  float: left;
+  color: #0070c9;
+  cursor: pointer;
+}
+
+.settings_three_description{
+  margin-top: 15px;
+  width: 150px;
+  color: #6e6e7ad1;
+}
+
+.settings_title_two{
+  float: left;
+  margin-right: 30px;
+  color: #0070c9;
+  cursor: pointer;
+}
+
+.settings_two_description{
+  margin-top: 15px;
+  width: 150px;
+  color: #6e6e7ad1;
+}
+
+.settings_selection{
+  height: 110px;
+}
+
+.settings_subtitle{
+  color: #6e6e7ad1;
+}
+
+.logout{
+  border: none;
+  color: #0070c9;
+  text-decoration:none;
+}
+
+.account_user_name_title {
+  margin-top: 10px;
+  float: left;
+}
+
+.account_user_name_title_input {
+  margin-top: 4px;
+  float: right;
+}
+
+.account_user_change_phone_input{
+  margin-top: 4px;
+  float: right;
+}
+
+.account_user_confirm_change_password_input{
+  margin-top: 4px;
+  float: right;
+}
+
+.account_user_change_email_input{
+  margin-top: 4px;
+  float: right;
+}
+
+.account_user_change_password_input{
+  margin-top: 4px;
+  float: right;
+}
+
+.account_user_change_profile_picture{
+  margin-top: 14px;
+  float: left;
+}
+
+.account_user_change_phone{
+  margin-top: 14px;
+  float: left;
+}
+
+.account_user_confirm_change_password{
+  margin-top: 14px;
+  float: left;
+}
+
+.account_user_change_profile_picture_title{
+  margin-top: 10px;
+  float: left;
+}
+
+.account_user_change_email{
+  margin-top: 10px;
+  float: left;
+}
+
+.account_user_change_password{
+  margin-top: 10px;
+  float: left;
+}
+
+.diet_allergies_title{
+  margin-top: 10px;
+  float: left;
+}
+
+.diet_allergies_input{
+  margin-top: 4px;
+  margin-bottom: 15px;
+  float: right;
+}
+
+.diet_allergies_list_container{
+  float: left;
+}
+
+.diet_allergies_list_container_input{
+  float: left;
+}
+
+.business_registration_venue_title{
+  margin-top: 10px;
+  float: left;
+}
+
+.business_registration_venue_title_input{
+  margin-top: 4px;
+  margin-bottom: 15px;
+  float: right;
+}
+
+.business_registration_venue_address{
+  float: left;
+}
+
+.business_registration_venue_address_input{
+  float: left;
+}
+
+.business_registration_venue_confirm{
+  margin-top: 50px;
+  color: #00c853;
+  cursor: pointer;
+}
+
+.business_registration_hours_confirm{
+  margin-top: 11px;
+  color: #00c853;
+  cursor: pointer;
+}
+
+.business_Address{
+  float: left;
+  margin-top: 4px;
+}
+
+.isLocatedAt{
+  float: right;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.showOthers{
+  margin-top: 30px;
+  color: #6e6e7ad1;
+  cursor: pointer;
+}
+
+.showOthers{
+  width: fit-content;
+}
+
+.openingHours_Table{
+  margin-top: 17px;
+}
+
+th{
+  padding-top: 5px;
+  padding-right: 20px;
+  font-size: 16px;
+  font-weight: normal;
+  color: #6E6E7A;
+}
+
+td{
+  padding-right: 10px;
+  text-align:center;
+  vertical-align:middle;
+  font-size: 18px;
+}
+
+
+.registration_time_input{
+  text-align: center;
+  color: black;
+  width: 70px;
+  background: transparent;
+  border: none;
+  margin-bottom: 3px;
+  border-bottom: 1px solid #6e6e7ad1;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+.processMenu_title{
+  margin-top: 17px;
+  color: #6E6E7A;
+}
+
+.submitMenu_container{
+  margin-top: 13px;
+}
+
+.submitUser_Photo_container{
+  margin-top: 13px;
+}
+
+.submit_user_contact{
+  margin-top: 13px;
+}
+
+#menu_uploader{
+  cursor: pointer;
+  float: left;
+  font-size: 16px;
+  color: #00c853;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+#user_photo_uploader{
+  cursor: pointer;
+  float: left;
+  font-size: 16px;
+  color: #00c853;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+#user_contact_uploader{
+  margin-top: 30px;
+  cursor: pointer;
+  float: left;
+  font-size: 16px;
+  color: #00c853;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+#user_replace_ingredient{
+  cursor: pointer;
+  float: left;
+  font-size: 16px;
+  color: #00c853;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+#user_replace_ingredient:focus{
+  outline: none;
+}
+
+#user_contact_uploader:focus{
+  outline: none;
+}
+
+.data_info{
+  margin-top: 10px;
+  float: left;
+}
+
+.feature_info{
+  margin-top: 10px;
+  float: left;
+}
+
+.data_users_local{
+  margin-right: 94px;
+  float: left;
+  color: #6e6e7ad1;
+}
+
+.data_users_local_detail{
+  color: black;
+}
+
+.data_mean_age{
+  margin-right: 46px;
+  float: left;
+  color: #6e6e7ad1;
+}
+
+.feature_latest_update{
+  margin-right: 46px;
+  float: left;
+  color: #6e6e7ad1;
+}
+
+.data_mean_age_detail{
+  color: black;
+}
+
+.feature_latest_update_detail{
+  color: black;
+}
+
+.data_local_growth{
+  float: left;
+  color: #6e6e7ad1;
+}
+
+.data_local_growth_detail{
+  color: black;
+}
+
+.statistical_summary{
+  padding-top: 15px;
+  width: 450px;
+  color: #6e6e7ad1;
+}
+
+.feature_summary{
+  padding-top: 15px;
+  width: 450px;
+  color: #6e6e7ad1;
+}
+
+.data_register{
+  margin-top: 56px;
+  color: #00c853;
+  cursor: pointer;
+}
+
+.feature_update_line_one{
+  margin-top: 5px;
+}
+
+.feature_update_line_two{
+  margin-top: 5px;
+}
+
+.settings_two_description_a{
+  padding-bottom: 7px;
+}
+
+.image_settings{
+  margin-right: 15px;
+  float: left;
+  width: 60px;
+  height: 60px;
+}
+
+.settings_one_user_location_top_tier{
+  margin-top: 6px;
+}
+
+.user_update_confirmation{
+  margin-top: 65px;
+  color: #00c853;
+  cursor: pointer;
+}
+
+.response_user_change{
+  margin-top: 65px;
+  color: #6e6e7ad1;
+  cursor: pointer;
+}
+
+.showUserReplacedIngredients{
+  margin-top: 13px;
+  cursor: pointer;
+  width: 200px;
+  height: 25px;
+  color: #0070c9;
+}
+
+.addReplacement{
+  margin-top: 10px;
+  cursor: pointer;
+  float: left;
+  font-size: 16px;
+  color: #00c853;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.ingredient_header{
+  padding: 5px;
+}
+
+.ingredient_alt{
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  color: black;
+  width: 100px;
+  border: none;
+  margin-bottom: 3px;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+.allergen_specific{
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  color: #0070c9;
+  cursor: pointer;
+  width: 100px;
+  border: none;
+  margin-bottom: 3px;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+#ingredient_primary{
+  cursor: pointer;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  color: #0070c9;
+  width: 100px;
+  border: none;
+  margin-bottom: 3px;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+#first_ing{
+  text-align: center;
+  color: black;
+  width: 100px;
+  background: transparent;
+  border: none;
+  margin-bottom: 3px;
+  border-bottom: 1px solid #6e6e7ad1;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+#second_ing{
+  text-align: center;
+  color: black;
+  width: 100px;
+  background: transparent;
+  border: none;
+  margin-bottom: 3px;
+  border-bottom: 1px solid #6e6e7ad1;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+#third_ing{
+  text-align: center;
+  color: black;
+  width: 100px;
+  background: transparent;
+  border: none;
+  margin-bottom: 3px;
+  border-bottom: 1px solid #6e6e7ad1;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+#fourth_ing{
+  text-align: center;
+  color: black;
+  width: 100px;
+  background: transparent;
+  border: none;
+  margin-bottom: 3px;
+  border-bottom: 1px solid #6e6e7ad1;
+  font-size: 16px;
+  outline: none;
+  font-family: "Arial", sans-serif;
+}
+
+.addReplacements{
+  cursor: pointer;
+  margin-top: 32px;
+  color: #00c853;
+}
+
+.addAllergen{
+  position: absolute;
+  cursor: pointer;
+  margin-top: 57px;
+  color: #00c853;
+}
+
+#ingredient_title{
+  color: #0070c9;
+  cursor: pointer;
+}
+
+#ingredient_subs_question{
+  margin-top: 32px;
+}
+
+#allergen_removal_question{
+  margin-top: 32px;
+}
+
+.delete_subs{
+  cursor: pointer;
+  float: left;
+  margin-right: 5px;
+  color: #FF4235;
+}
+
+.or_subs{
+  float: left;
+  margin-right: 5px;
+  color: #6E6E7A;
+}
+
+.keep_subs{
+  cursor: pointer;
+  float: left;
+  color: #00c853;
+}
+
+.kJ_form_output{
+  margin-top: 8px;
+}
+
+.kJ_form{
+  padding-top: 10px;
+  margin-top: 8px;
+}
+
+#kj_form_slider{
+  margin-top: 30px;
+}
+
+.filterResultsForKJCap{
+  float: left;
+  margin-top: 17px;
+  color: #00c853;
+  cursor: pointer;
+}
+
+.completedkJUpload{
+  padding-top: 70px;
+  color: #6e6e7ad1
+}
+
+.completedAllergenChange{
+  padding-top: -10px;
+  color: #6e6e7ad1
+}
+
+.completedAllergenUpload{
+  padding-top: 70px;
+  color: #6e6e7ad1;
+}
+
+.addAllergy_container{
+  margin-top: 73px;
+  color: #00c853;
+}
+
+.faq_search_result{
+  margin-top: 20px;
+}
+
+.faq_search_question{
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.faq_search_solution{
+  margin-top: 5px;
+  font-size: 16px;
+  color: #6E6E7A;
+}
+
+.messages_help{
+  height: 80px;
+}
+
+.privacy_opening{
+  margin-top: 30px;
+}
+
+.privacy_download{
+  margin-top: 30px;
+  color: #0070c9;
+}
+
+.about_top{
+  margin-top: 30px;
+}
+
+.reserve_input_container{
+  float: left;
+}
+
+.reserve_result_container{
+  float: left;
+  margin-left: 30px;
+  color: #6E6E7A;
+}
+
+.booking_where_result{
+  margin-top: 28px;
+  padding-bottom: 25px;
+}
+.booking_time{
+}
+
+.booking_time_result{
+  padding-bottom: 29px;
+  margin-top: 3px;
+}
+
+.booking_action{
+  font-size: 16px;
+  padding-top: 4px;
+  color: #0070c9;
+  cursor: pointer;
+}
+
+.divider_reserve{
+  padding-top: 300px;
+}
+
+.booking_pre_order{
+  margin-top: 30px;
+  color: #0070c9;
+  cursor: pointer;
+}
+
+.login_selection{
+  visibility: hidden;
+}
+
+#previous_order_submit{
+  font-family: "Arial", sans-serif;
+  cursor: pointer;
+  font-size: 18px;
+  color: #0070c9;
+  border: none;
+  font-weight: 100;
+}
+
+#previous_order_submit:focus{
+  outline:0;
+}
+
+.order_box{
+  margin-top: 50px;
+  margin-left: 10px;
+  color: #6E6E7A;
+  font-family: "Arial", sans-serif;
+
+}
+
+.order_details{
+  float: left;
+  padding-left: 423px;
+  position: absolute;
+  font-size: 16px;
+}
+
+.order_title{
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.order_extras{
+  width: 41px;
+  float: left;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.order_price{
+  width: 50px;
+  padding-left: 42px;
+  float: left;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.order_eta{
+  width: 50px;
+  float: left;
+  padding-left: 28px;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.order_product{
+  float: left;
+  font-size: 14px;
+}
+
+.hr_order{
+  float: left;
+  width: 640px;
+  margin-left: 10px;
+}
+
+.queue_container{
+  position: absolute;
+  border; 1px solid green;
+  width: 200px;
+  height: 50px;
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+  color: #6E6E7A;
+}
+
+#queue_picture{
+  float: left;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 6px;
+}
+
+#queue_name{
+  padding-top: 3px;
+}
+
+#queue_event{
+  padding-top: 3px;
+}
+
+.test_queue{
+  position: absolute;
+  overflow:hidden;
+  border; 1px solid green;
+  width: 200px;
+  height: 50px;
+  left: 640px;
+  font-family: "Arial", sans-serif;
+  font-size: 12px;
+  color: #6E6E7A;
+  float: left;
+}
+
+.prev, .next {
+  position: absolute;
+  cursor: pointer;
+  width: auto;
+  margin-top: 14px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  margin-bottom: 10px;
+}
+
+.prev {
+  margin-left: 30px;
+}
+
+.next {
+  margin-left: 90px;
+  border-radius: 3px 0 0 3px;
+}
+
+.gallery_control_container{
+  height:50px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(124,124,124,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  position: absolute;
+  width: 100%;
+  margin-top: -50px;
+}
+
+.order_choice{
+  margin-left: 7px;
+  margin-top: 10px;
+  font-family: "Arial", sans-serif;
+  font-size: 18px;
+  color: #0070c9;
+  border: none;
+  font-weight: 100;
+  float: left;
+  cursor: pointer;
+}
+
+.order_pre_order_for_booking{
+  margin-top: 30px;
+  margin-right: 100px;
+}
+
+#order_line_break{
+  width: 96%;
+}

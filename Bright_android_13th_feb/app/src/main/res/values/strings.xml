@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Bright</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="facebook_app_id">175515203060221</string>
+    <string name="fb_login_protocol_scheme">fb175515203060221</string>
+
+</resources>

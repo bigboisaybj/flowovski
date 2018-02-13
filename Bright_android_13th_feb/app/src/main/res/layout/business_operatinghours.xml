@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:id="@+id/constraintLayoutForStepOne"
+    card_view:cardCornerRadius="12dp"
+    card_view:cardElevation="3dp"
+    card_view:contentPadding="4dp"
+    android:clickable="true">
+
+    <ImageButton
+        android:id="@+id/noAnswer"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/square_orange"
+        card_view:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="16dp"
+        card_view:layout_constraintTop_toBottomOf="@+id/sameHoursQuestion"
+        card_view:layout_constraintVertical_bias="0.0"
+        card_view:layout_constraintRight_toRightOf="parent"
+        card_view:layout_constraintLeft_toLeftOf="parent"
+        card_view:layout_constraintHorizontal_bias="0.502" />
+
+    <ImageButton
+        android:id="@+id/yesAnswer"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/square_orange"
+        card_view:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="16dp"
+        card_view:layout_constraintTop_toBottomOf="@+id/sameHoursQuestion"
+        card_view:layout_constraintVertical_bias="0.0"
+        card_view:layout_constraintRight_toLeftOf="@+id/noAnswer"
+        android:layout_marginRight="32dp" />
+
+    <ImageButton
+        android:id="@+id/twentyFourAnswer"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="16dp"
+        card_view:layout_constraintBottom_toBottomOf="parent"
+        card_view:layout_constraintTop_toBottomOf="@+id/sameHoursQuestion"
+        card_view:layout_constraintVertical_bias="0.0"
+        android:scaleType="centerCrop"
+        android:background="@drawable/square_orange"
+        card_view:layout_constraintLeft_toRightOf="@+id/noAnswer"
+        android:layout_marginLeft="32dp" />
+
+    <TextView
+        android:id="@+id/sameHoursQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Is store name at the sametime everyday?"
+        card_view:layout_constraintLeft_toLeftOf="parent"
+        card_view:layout_constraintRight_toRightOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/yesAnswerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Yes"
+        card_view:layout_constraintBottom_toBottomOf="@+id/yesAnswer"
+        card_view:layout_constraintTop_toTopOf="@+id/yesAnswer"
+        android:layout_marginRight="8dp"
+        card_view:layout_constraintRight_toRightOf="@+id/yesAnswer"
+        android:layout_marginLeft="8dp"
+        card_view:layout_constraintLeft_toLeftOf="@+id/yesAnswer" />
+
+    <TextView
+        android:id="@+id/noAnswerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="8dp"
+        android:text="No"
+        card_view:layout_constraintBottom_toBottomOf="@+id/noAnswer"
+        card_view:layout_constraintLeft_toLeftOf="@+id/noAnswer"
+        card_view:layout_constraintRight_toRightOf="@+id/noAnswer"
+        card_view:layout_constraintTop_toTopOf="@+id/noAnswer" />
+
+
+    <TextView
+        android:id="@+id/alltimeAnswerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="8dp"
+        android:text="24/7"
+        card_view:layout_constraintBottom_toBottomOf="@+id/twentyFourAnswer"
+        card_view:layout_constraintLeft_toLeftOf="@+id/twentyFourAnswer"
+        card_view:layout_constraintRight_toRightOf="@+id/twentyFourAnswer"
+        card_view:layout_constraintTop_toTopOf="@+id/twentyFourAnswer" />
+
+</android.support.constraint.ConstraintLayout>
